@@ -1,49 +1,42 @@
 #include "Matr.h"
 #include <random>
-#include <vector> 
 
-std::vector<std::vector<int>> Matr_Create(int nCities) {
-
-    std::vector<std::vector<int>> matrix;
-
+int** Creat_eMatr(int nCities) {
+    int** matrix = new int* [nCities];
     for (int i = 0; i < nCities; i++) {
-
-        std::vector<int> row(nCities, 0);
-
-        matrix.push_back(row);
+        matrix[i] = new int[nCities];
     }
-
     return matrix;
 }
 
-void fillRandomMatr(std::vector<std::vector<int>>& matrix, int minCost, int maxCost) {
+void Destroy_Matr(int** matrix, int nCities) {
+    for (int i = 0; i < nCities; i++) {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+}
 
-    int nCities = matrix.size();
-
+void fillimg_RandomMatr(int** matrix, int nCities, int minCost, int maxCost) {
     std::random_device randomDevice;
     std::mt19937 generator(randomDevice());
     std::uniform_int_distribution<int> distribution(minCost, maxCost);
 
-
     for (int i = 0; i < nCities; i++) {
-
         for (int j = 0; j < nCities; j++) {
-
             if (i == j) {
                 matrix[i][j] = 0;
             }
-
             else {
                 matrix[i][j] = distribution(generator);
             }
-
         }
     }
 }
-bool isVisited(const std::vector<int>& path, int city) {
-    for (int i = 0; i < path.size(); i++) {
 
-        if (path[i] == city) return true;
+bool isVisited(const int* path, int count, int cit) {
+    for (int i = 0; i < count; i++) {
+
+        if (path[i] == cit) return true;
 
     }
     return false;
