@@ -140,6 +140,10 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Matr.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Matr.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
