@@ -27,4 +27,9 @@
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resume.md">
+      <Filter>Исходные файлы\Файлы заголовков</Filter>
+    </None>
+  </ItemGroup>
 </Project>

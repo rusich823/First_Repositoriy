@@ -38,37 +38,43 @@ void City_Check(int** matr, int N, int* path, int count, int current_city, int& 
 
     int main() {
         setlocale(LC_ALL, "ru_RU.UTF-8");
-        int N ;
+        int sizes[] = { 4,6, 8 , 10, 12 };
 
-        std::cout << "Введите количество городов для теста: ";
-        std::cin >> N;
+        //std::cout << "Введите количество городов для теста: ";
+        //std::cin >> N;
+        for (int i = 0;i < 5; i++) {
 
-        int** matr = Creat_eMatr(N);
-        fillimg_RandomMatr(matr, N, 10, 100);
+            int N = sizes[i];
+            std::cout << "--- ТЕСТИРОВАНИЕ ДЛЯ N = " << N << " ---" << std::endl;
 
-        int* path = new int[N];
-        int* best_path = new int[N];
+            for (int test = 1; test <= 4; test++) {
+                int** matr = Creat_eMatr(N);
+                fillimg_RandomMatr(matr, N, 10, 1000);
 
-        int start_ct = 0;
-        path[0] = start_ct;
-        int min_cost = 2147483647;
-        
-        std::chrono::high_resolution_clock::time_point timeBegin = std::chrono::high_resolution_clock::now();
+                int* path = new int[N];
+                int* best_path = new int[N];
 
-        City_Check(matr, N, path, 1, start_ct, min_cost, best_path);
+                int start_ct = 0;
+                path[0] = start_ct;
+                int min_cost = 2147483647;
 
-        std::chrono::high_resolution_clock::time_point timeEnd = std::chrono::high_resolution_clock::now();
+                std::chrono::high_resolution_clock::time_point timeBegin = std::chrono::high_resolution_clock::now();
 
-        std::chrono::milliseconds interval = std::chrono::duration_cast<std::chrono::milliseconds>(timeEnd - timeBegin);
+                City_Check(matr, N, path, 1, start_ct, min_cost, best_path);
 
-        std::cout << "Количество городов: " << N << std::endl;
-        std::cout << "Минимальная стоимость: " << min_cost << std::endl;
-        std::cout << "Время " << interval.count() / 1000.0 << std::endl;
+                std::chrono::high_resolution_clock::time_point timeEnd = std::chrono::high_resolution_clock::now();
 
-        Destroy_Matr(matr, N);
-        delete[] path;
-        delete[] best_path;
+                std::chrono::milliseconds interval = std::chrono::duration_cast<std::chrono::milliseconds>(timeEnd - timeBegin);
 
+                std::cout << "Количество городов: " << N << std::endl;
+                std::cout << "Минимальная стоимость: " << min_cost << std::endl;
+                std::cout << "Время " << interval.count() / 1000.0 << std::endl;
+
+                Destroy_Matr(matr, N);
+                delete[] path;
+                delete[] best_path;
+            }
+        }
         return 0;
         
 }
