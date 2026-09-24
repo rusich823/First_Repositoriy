@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Matr.h"
 #include <random>
+#include <chrono>
+#include <clocale>
 
 void City_Check(int** matr, int N, int* path, int count, int current_city, int& min_cost, int* best_path) {
     if (count == N) {
@@ -35,13 +37,14 @@ void City_Check(int** matr, int N, int* path, int count, int current_city, int& 
 
 
     int main() {
+        setlocale(LC_ALL, "ru_RU.UTF-8");
         int N ;
 
         std::cout << "Введите количество городов для теста: ";
         std::cin >> N;
 
         int** matr = Creat_eMatr(N);
-        fillimg_RandomMatr(matr, N, 1, 100);
+        fillimg_RandomMatr(matr, N, 10, 100);
 
         int* path = new int[N];
         int* best_path = new int[N];
@@ -49,12 +52,19 @@ void City_Check(int** matr, int N, int* path, int count, int current_city, int& 
         int start_ct = 0;
         path[0] = start_ct;
         int min_cost = 2147483647;
+        
+        std::chrono::high_resolution_clock::time_point timeBegin = std::chrono::high_resolution_clock::now();
 
         City_Check(matr, N, path, 1, start_ct, min_cost, best_path);
 
+        std::chrono::high_resolution_clock::time_point timeEnd = std::chrono::high_resolution_clock::now();
+
+        std::chrono::milliseconds interval = std::chrono::duration_cast<std::chrono::milliseconds>(timeEnd - timeBegin);
+
         std::cout << "Количество городов: " << N << std::endl;
         std::cout << "Минимальная стоимость: " << min_cost << std::endl;
-     
+        std::cout << "Время " << interval.count() / 1000.0 << std::endl;
+
         Destroy_Matr(matr, N);
         delete[] path;
         delete[] best_path;

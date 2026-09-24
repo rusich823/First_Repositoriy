@@ -16,7 +16,7 @@ void Destroy_Matr(int** matrix, int nCities) {
     delete[] matrix;
 }
 
-void fillimg_RandomMatr(int** matrix, int nCities, int minCost, int maxCost) {
+void fillimg_RandomMatr(int** matrix, int nCities, int minCost , int maxCost) {
     std::random_device randomDevice;
     std::mt19937 generator(randomDevice());
     std::uniform_int_distribution<int> distribution(minCost, maxCost);
