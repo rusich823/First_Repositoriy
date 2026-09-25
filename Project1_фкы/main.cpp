@@ -3,78 +3,59 @@
 #include <random>
 #include <chrono>
 #include <clocale>
+#include "travel_method.h"
 
-void City_Check(int** matr, int N, int* path, int count, int current_city, int& min_cost, int* best_path) {
-    if (count == N) {
-        int Last_ct = path[N - 1];
-        int start_ct = path[0];
 
-        if (matr[Last_ct][start_ct] != 0) {
-            int current_cost = 0;
+int main() {
+    setlocale(LC_ALL, "ru_RU.UTF-8");
+    int sizes[] = { 4, 6, 8, 10, 12 };
 
-            for (int i = 0; i < N - 1; i++) {
-                current_cost += matr[path[i]][path[i + 1]];
-            }
-            current_cost += matr[Last_ct][start_ct];
+    for (int i = 0; i < 5; i++) {
+        int N = sizes[i];
+        std::cout << "\n=============================================" << std::endl;
+        std::cout << "--- ТЕСТИРОВАНИЕ ДЛЯ N = " << N << " ---" << std::endl;
+        std::cout << "=============================================" << std::endl;
 
-            if (current_cost < min_cost) {
-                min_cost = current_cost;
-                for (int i = 0; i < N; i++) {
-                    best_path[i] = path[i];
-                }
-            }
+        for (int test = 1; test <= 4; test++) {
+            std::cout << "\n--- Тест №" << test << " ---" << std::endl;
+
+            int** matr = Creat_eMatr(N);
+            fillimg_RandomMatr(matr, N, 10, 1000);
+
+            int start_ct = 0;
+
+            int* path = new int[N];
+            int* best_path = new int[N];
+            path[0] = start_ct;
+            int min_cost = 2147483647;
+
+            std::chrono::high_resolution_clock::time_point timeBeginExact = std::chrono::high_resolution_clock::now();
+            City_Check(matr, N, path, 1, start_ct, min_cost, best_path);
+            std::chrono::high_resolution_clock::time_point timeEndExact = std::chrono::high_resolution_clock::now();
+            std::chrono::milliseconds intervalExact = std::chrono::duration_cast<std::chrono::milliseconds>(timeEndExact - timeBeginExact);
+
+            std::cout << "[Точный перебор]" << std::endl;
+            std::cout << "Стоимость: " << min_cost << std::endl;
+            std::cout << "Время: " << intervalExact.count() / 1000.0 << " сек." << std::endl;
+
+            int* path_greedy = new int[N];
+            path_greedy[0] = start_ct;
+            int total_cost = 0;
+
+            std::chrono::high_resolution_clock::time_point timeBeginGreedy = std::chrono::high_resolution_clock::now();
+            Greedy_Worst_Row(matr, N, path_greedy, 1, total_cost);
+            std::chrono::high_resolution_clock::time_point timeEndGreedy = std::chrono::high_resolution_clock::now();
+            std::chrono::milliseconds intervalGreedy = std::chrono::duration_cast<std::chrono::milliseconds>(timeEndGreedy - timeBeginGreedy);
+
+            std::cout << "[Метод худшей строки]" << std::endl;
+            std::cout << "Стоимость: " << total_cost << std::endl;
+            std::cout << "Время: " << intervalGreedy.count() / 1000.0 << " сек." << std::endl;
+
+            Destroy_Matr(matr, N);
+            delete[] path;
+            delete[] best_path;
+            delete[] path_greedy;
         }
-        return;
     }
-
-    for (int i = 0; i < N; i++) {
-        if (!isVisited(path, count, i) && matr[current_city][i] != 0) {
-            path[count] = i;
-            City_Check(matr, N, path, count + 1, i, min_cost, best_path);
-        }
-    }
-}
-
-
-    int main() {
-        setlocale(LC_ALL, "ru_RU.UTF-8");
-        int sizes[] = { 4,6, 8 , 10, 12 };
-
-        //std::cout << "Введите количество городов для теста: ";
-        //std::cin >> N;
-        for (int i = 0;i < 5; i++) {
-
-            int N = sizes[i];
-            std::cout << "--- ТЕСТИРОВАНИЕ ДЛЯ N = " << N << " ---" << std::endl;
-
-            for (int test = 1; test <= 4; test++) {
-                int** matr = Creat_eMatr(N);
-                fillimg_RandomMatr(matr, N, 10, 1000);
-
-                int* path = new int[N];
-                int* best_path = new int[N];
-
-                int start_ct = 0;
-                path[0] = start_ct;
-                int min_cost = 2147483647;
-
-                std::chrono::high_resolution_clock::time_point timeBegin = std::chrono::high_resolution_clock::now();
-
-                City_Check(matr, N, path, 1, start_ct, min_cost, best_path);
-
-                std::chrono::high_resolution_clock::time_point timeEnd = std::chrono::high_resolution_clock::now();
-
-                std::chrono::milliseconds interval = std::chrono::duration_cast<std::chrono::milliseconds>(timeEnd - timeBegin);
-
-                std::cout << "Количество городов: " << N << std::endl;
-                std::cout << "Минимальная стоимость: " << min_cost << std::endl;
-                std::cout << "Время " << interval.count() / 1000.0 << std::endl;
-
-                Destroy_Matr(matr, N);
-                delete[] path;
-                delete[] best_path;
-            }
-        }
-        return 0;
-        
+    return 0;
 }

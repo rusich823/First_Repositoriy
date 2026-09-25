@@ -142,9 +142,11 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matr.cpp" />
+    <ClCompile Include="travel_method.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matr.h" />
+    <ClInclude Include="travel_method.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resume.md" />

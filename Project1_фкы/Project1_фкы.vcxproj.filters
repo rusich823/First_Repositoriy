@@ -18,13 +18,19 @@
     <ClCompile Include="Matr.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="travel_method.cpp">
+      <Filter>Исходные файлы\Файлы заголовков</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Файлы заголовков</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matr.h">
       <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="travel_method.h">
+      <Filter>Исходные файлы\Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
