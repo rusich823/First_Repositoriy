@@ -27,7 +27,7 @@ int main() {
             int* path = new int[N];
             int* best_path = new int[N];
             path[0] = start_ct;
-            int min_cost = 2147483647;
+            int min_cost = 100;
 
             std::chrono::high_resolution_clock::time_point timeBeginExact = std::chrono::high_resolution_clock::now();
             City_Check(matr, N, path, 1, start_ct, min_cost, best_path);
