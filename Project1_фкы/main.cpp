@@ -28,6 +28,7 @@ int main() {
             for (int j = 0; j < N; j++) path[j] = j; 
 
                 int min_cost = 1000;
+                int max_cost = 0;
 
                 std::chrono::high_resolution_clock::time_point timeBeginExact = std::chrono::high_resolution_clock::now();
 
@@ -43,8 +44,13 @@ int main() {
                     if (matr[path[N - 1]][path[0]] == 0) valid_route = false;
                     else current_cost += matr[path[N - 1]][path[0]];
 
-                    if (valid_route && current_cost < min_cost) {
-                        min_cost = current_cost;
+                    if (valid_route ) {
+                        if (current_cost < min_cost) {
+                            min_cost = current_cost;
+                        }
+                        if (current_cost > max_cost) {
+                            max_cost = current_cost;
+                        }
                     }
 
                 } while (next_deykstra_permutation(path, N));
@@ -52,7 +58,7 @@ int main() {
                 std::chrono::high_resolution_clock::time_point timeEndExact = std::chrono::high_resolution_clock::now();
                 std::chrono::milliseconds intervalExact = std::chrono::duration_cast<std::chrono::milliseconds>(timeEndExact - timeBeginExact);
 
-                std::cout << "Стоимость: " << min_cost << std::endl;
+                std::cout << "Минимум: " << min_cost << " | Максимум: " << max_cost << std::endl;
                 std::cout << "Время: " << intervalExact.count() / 1000.0 << " сек." << std::endl;
 
                 delete[] path;
@@ -73,6 +79,12 @@ int main() {
                 std::cout << "[Метод худшей строки (итеративный)]" << std::endl;
                 std::cout << "Стоимость: " << total_cost << std::endl;
                 std::cout << "Время: " << intervalGreedy.count() / 1000.0 << " сек." << std::endl;
+
+                if (max_cost != min_cost) {
+                    double quality = (double)(max_cost - total_cost) / (max_cost - min_cost) * 100.0;
+                    std::cout << "Качество эвристики (Quality): " << quality << "%" << std::endl;
+                }
+
 
 
                 Destroy_Matr(matr, N);

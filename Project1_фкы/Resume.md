@@ -13,113 +13,60 @@
 ### Тест 1. Ограниченный разброс стоимостей (от 10 до 100)
 
 
-### Алгоритм полного перебора
+### 
 ```text
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 4 ---
-=============================================
-  Run #1 | Exact [Min: 166, Time: 0.000s] | WorstRow [Cost: 237, Time: 0.000s] | Quality: 74.3%
-  Run #2 | Exact [Min: 122, Time: 0.000s] | WorstRow [Cost: 228, Time: 0.000s] | Quality: 62.1%
-  Run #3 | Exact [Min: 173, Time: 0.000s] | WorstRow [Cost: 206, Time: 0.000s] | Quality: 87.9%
-  Run #4 | Exact [Min: 160, Time: 0.000s] | WorstRow [Cost: 329, Time: 0.000s] | Quality: 34.3%
+Dimension: 4x4
+  Run #1 | Exact [Min: 159, Max: 347, Time: 0.000s] | WorstRow [Cost: 265, Time: 0.000s] | Quality: 43.6%
+  Run #2 | Exact [Min: 126, Max: 286, Time: 0.000s] | WorstRow [Cost: 211, Time: 0.000s] | Quality: 46.9%
+  Run #3 | Exact [Min: 190, Max: 329, Time: 0.000s] | WorstRow [Cost: 284, Time: 0.000s] | Quality: 32.4%
+  Run #4 | Exact [Min: 159, Max: 276, Time: 0.000s] | WorstRow [Cost: 213, Time: 0.000s] | Quality: 53.8%
 
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 6 ---
-=============================================
-  Run #1 | Exact [Min: 170, Time: 0.000s] | WorstRow [Cost: 316, Time: 0.000s] | Quality: 70.1%
-  Run #2 | Exact [Min: 181, Time: 0.000s] | WorstRow [Cost: 390, Time: 0.000s] | Quality: 54.4%
-  Run #3 | Exact [Min: 208, Time: 0.000s] | WorstRow [Cost: 438, Time: 0.000s] | Quality: 49.3%
-  Run #4 | Exact [Min: 194, Time: 0.000s] | WorstRow [Cost: 330, Time: 0.000s] | Quality: 69.1%
+Dimension: 6x6
+  Run #1 | Exact [Min: 210, Max: 483, Time: 0.000s] | WorstRow [Cost: 427, Time: 0.000s] | Quality: 20.5%
+  Run #2 | Exact [Min: 167, Max: 404, Time: 0.000s] | WorstRow [Cost: 301, Time: 0.000s] | Quality: 43.5%
+  Run #3 | Exact [Min: 215, Max: 445, Time: 0.000s] | WorstRow [Cost: 411, Time: 0.000s] | Quality: 14.8%
+  Run #4 | Exact [Min: 159, Max: 475, Time: 0.000s] | WorstRow [Cost: 310, Time: 0.000s] | Quality: 52.2%
 
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 8 ---
-=============================================
-  Run #1 | Exact [Min: 230, Time: 0.000s] | WorstRow [Cost: 465, Time: 0.000s] | Quality: 67.3%
-  Run #2 | Exact [Min: 173, Time: 0.000s] | WorstRow [Cost: 619, Time: 0.000s] | Quality: 44.5%
-  Run #3 | Exact [Min: 244, Time: 0.000s] | WorstRow [Cost: 573, Time: 0.000s] | Quality: 52.8%
-  Run #4 | Exact [Min: 208, Time: 0.000s] | WorstRow [Cost: 597, Time: 0.000s] | Quality: 47.7%
+Dimension: 8x8
+  Run #1 | Exact [Min: 209, Max: 623, Time: 0.000s] | WorstRow [Cost: 594, Time: 0.000s] | Quality: 7.0%
+  Run #2 | Exact [Min: 255, Max: 646, Time: 0.000s] | WorstRow [Cost: 475, Time: 0.000s] | Quality: 43.7%
+  Run #3 | Exact [Min: 157, Max: 652, Time: 0.000s] | WorstRow [Cost: 463, Time: 0.000s] | Quality: 38.2%
+  Run #4 | Exact [Min: 172, Max: 668, Time: 0.000s] | WorstRow [Cost: 444, Time: 0.000s] | Quality: 45.2%
 
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 10 ---
-=============================================
-  Run #1 | Exact [Min: 283, Time: 0.009s] | WorstRow [Cost: 596, Time: 0.000s] | Quality: 64.9%
-  Run #2 | Exact [Min: 235, Time: 0.008s] | WorstRow [Cost: 660, Time: 0.000s] | Quality: 57.3%
-  Run #3 | Exact [Min: 253, Time: 0.008s] | WorstRow [Cost: 775, Time: 0.000s] | Quality: 45.4%
-  Run #4 | Exact [Min: 275, Time: 0.009s] | WorstRow [Cost: 703, Time: 0.000s] | Quality: 54.1%
+Dimension: 10x10
+  Run #1 | Exact [Min: 257, Max: 875, Time: 0.014s] | WorstRow [Cost: 622, Time: 0.000s] | Quality: 40.9%
+  Run #2 | Exact [Min: 271, Max: 888, Time: 0.014s] | WorstRow [Cost: 696, Time: 0.000s] | Quality: 31.1%
+  Run #3 | Exact [Min: 242, Max: 840, Time: 0.015s] | WorstRow [Cost: 640, Time: 0.000s] | Quality: 33.4%
+  Run #4 | Exact [Min: 258, Max: 831, Time: 0.017s] | WorstRow [Cost: 652, Time: 0.000s] | Quality: 31.2%
 
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 12 ---
-=============================================
-  Run #1 | Exact [Min: 205, Time: 1.166s] | WorstRow [Cost: 664, Time: 0.000s] | Quality: 68.3%
-  Run #2 | Exact [Min: 240, Time: 1.181s] | WorstRow [Cost: 821, Time: 0.000s] | Quality: 54.3%
-  Run #3 | Exact [Min: 304, Time: 1.143s] | WorstRow [Cost: 840, Time: 0.000s] | Quality: 53.6%
-  Run #4 | Exact [Min: 298, Time: 1.144s] | WorstRow [Cost: 747, Time: 0.000s] | Quality: 62.4%
+Dimension: 11x11
+  Run #1 | Exact [Min: 254, Max: 948, Time: 0.181s] | WorstRow [Cost: 725, Time: 0.000s] | Quality: 32.1%
+  Run #2 | Exact [Min: 232, Max: 985, Time: 0.149s] | WorstRow [Cost: 741, Time: 0.000s] | Quality: 32.4%
+  Run #3 | Exact [Min: 294, Max: 1002, Time: 0.165s] | WorstRow [Cost: 729, Time: 0.000s] | Quality: 38.6%
+  Run #4 | Exact [Min: 203, Max: 927, Time: 0.150s] | WorstRow [Cost: 663, Time: 0.000s] | Quality: 36.5%
 
   ```
-  ### Алгоритм худшей строки 
-
-  ```text
-  =============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 4 ---
-=============================================
-  Run #1 | Exact [Time: 0.000s] | WorstRow [Cost: 79,  Time: 0.000s] | Quality: 100.0%
-  Run #2 | Exact [Time: 0.000s] | WorstRow [Cost: 134, Time: 0.000s] | Quality: 93.5%
-  Run #3 | Exact [Time: 0.000s] | WorstRow [Cost: 186, Time: 0.000s] | Quality: 88.0%
-  Run #4 | Exact [Time: 0.000s] | WorstRow [Cost: 161, Time: 0.000s] | Quality: 91.2%
-
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 6 ---
-=============================================
-  Run #1 | Exact [Time: 0.000s] | WorstRow [Cost: 215, Time: 0.000s] | Quality: 92.5%
-  Run #2 | Exact [Time: 0.000s] | WorstRow [Cost: 270, Time: 0.000s] | Quality: 87.0%
-  Run #3 | Exact [Time: 0.000s] | WorstRow [Cost: 301, Time: 0.000s] | Quality: 85.5%
-  Run #4 | Exact [Time: 0.000s] | WorstRow [Cost: 277, Time: 0.000s] | Quality: 86.8%
-
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 8 ---
-=============================================
-  Run #1 | Exact [Time: 0.001s] | WorstRow [Cost: 461, Time: 0.000s] | Quality: 84.1%
-  Run #2 | Exact [Time: 0.001s] | WorstRow [Cost: 375, Time: 0.000s] | Quality: 92.3%
-  Run #3 | Exact [Time: 0.001s] | WorstRow [Cost: 423, Time: 0.000s] | Quality: 87.8%
-  Run #4 | Exact [Time: 0.001s] | WorstRow [Cost: 420, Time: 0.000s] | Quality: 88.1%
-
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 10 ---
-=============================================
-  Run #1 | Exact [Time: 0.112s] | WorstRow [Cost: 542, Time: 0.000s] | Quality: 90.4%
-  Run #2 | Exact [Time: 0.121s] | WorstRow [Cost: 576, Time: 0.000s] | Quality: 88.2%
-  Run #3 | Exact [Time: 0.124s] | WorstRow [Cost: 509, Time: 0.000s] | Quality: 92.1%
-  Run #4 | Exact [Time: 0.116s] | WorstRow [Cost: 550, Time: 0.000s] | Quality: 89.8%
-
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 12 ---
-=============================================
-  Run #1 | Exact [Time: 15.105s] | WorstRow [Cost: 687, Time: 0.000s] | Quality: 91.3%
-  Run #2 | Exact [Time: 14.997s] | WorstRow [Cost: 671, Time: 0.000s] | Quality: 92.4%
-  Run #3 | Exact [Time: 21.058s] | WorstRow [Cost: 684, Time: 0.000s] | Quality: 91.5%
-  Run #4 | Exact [Time: 22.282s] | WorstRow [Cost: 681, Time: 0.000s] | Quality: 91.7%
-```
 
 ### Тест 2
 
    ### Алгоритм худшей строки с матрицой N=100 и N=1000
   ```text
-  
-=============================================
+ =============================================
 --- ТЕСТИРОВАНИЕ ДЛЯ N = 100 ---
 =============================================
-  Run #1 | Exact [Физически невозможен]   | WorstRow [Cost: 6214, Time: 0.019s] | Quality: Стабильно
-  Run #2 | Exact [Физически невозможен]   | WorstRow [Cost: 5939, Time: 0.017s] | Quality: Стабильно
-  Run #3 | Exact [Физически невозможен]   | WorstRow [Cost: 5955, Time: 0.017s] | Quality: Стабильно
-  Run #4 | Exact [Физически невозможен]   | WorstRow [Cost: 6284, Time: 0.018s] | Quality: Стабильно
+  Run #1 | WorstRow [Cost: 6214, Time: 0.019s]
+  Run #2 | WorstRow [Cost: 5939, Time: 0.017s]
+  Run #3 | WorstRow [Cost: 5955, Time: 0.017s]
+  Run #4 | WorstRow [Cost: 6284, Time: 0.018s]
 
 =============================================
 --- ТЕСТИРОВАНИЕ ДЛЯ N = 1000 ---
 =============================================
-  Run #1 | Exact [Физически невозможен]   | WorstRow [Cost: 57619, Time: 124.435s] | Quality: Высокое
-  Run #2 | Exact [Физически невозможен]   | WorstRow [Cost: 58762, Time: 134.293s] | Quality: Высокое
-  Run #3 | Exact [Физически невозможен]   | WorstRow [Cost: 57451, Time: 133.670s] | Quality: Высокое
-  Run #4 | Exact [Физически невозможен]   | WorstRow [Cost: 57352, Time: 133.719s] | Quality: Высокое
+  Run #1 | WorstRow [Cost: 57619, Time: 124.435s]
+  Run #2 | WorstRow [Cost: 58762, Time: 134.293s]
+  Run #3 | WorstRow [Cost: 57451, Time: 133.670s]
+  Run #4 | WorstRow [Cost: 57352, Time: 133.719s]
+
 ```
 
 ## 3. Выводы по работе
