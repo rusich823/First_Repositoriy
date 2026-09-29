@@ -7,7 +7,7 @@
 
 int main() {
     setlocale(LC_ALL, "ru_RU.UTF-8");
-    int sizes[] = { 4, 6, 8, 10, 12 };
+    int sizes[] = { 4, 6, 8, 10, 11};
 
     for (int i = 0; i < 5; i++) {
         int N = sizes[i];
@@ -27,7 +27,7 @@ int main() {
             int* path = new int[N];
             for (int j = 0; j < N; j++) path[j] = j; 
 
-                int min_cost = 10;
+                int min_cost = 1000;
 
                 std::chrono::high_resolution_clock::time_point timeBeginExact = std::chrono::high_resolution_clock::now();
 
