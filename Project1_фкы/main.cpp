@@ -7,7 +7,7 @@
 
 int main() {
     setlocale(LC_ALL, "ru_RU.UTF-8");
-    int sizes[] = { 4, 6, 8, 100, 1000 };
+    int sizes[] = { 4, 6, 8, 10, 12 };
 
     for (int i = 0; i < 5; i++) {
         int N = sizes[i];
@@ -21,64 +21,63 @@ int main() {
             int** matr = Creat_eMatr(N);
             fillimg_RandomMatr(matr, N, 10, 100);
 
-            //
-            //std::cout << "[Точный перебор]" << std::endl;
-           
-            //    int* path = new int[N];
-            //    for (int j = 0; j < N; j++) path[j] = j;
 
-                //int min_cost = 2147483647;
+            std::cout << "[Точный перебор]" << std::endl;
 
-                //std::chrono::high_resolution_clock::time_point timeBeginExact = std::chrono::high_resolution_clock::now();
+            int* path = new int[N];
+            for (int j = 0; j < N; j++) path[j] = j; 
 
-                //do {
-                //    int current_cost = 0;
-                //    bool valid_route = true;
+                int min_cost = 10;
 
-                //    for (int j = 0; j < N - 1; j++) {
-                //        if (matr[path[j]][path[j + 1]] == 0) { valid_route = false; break; }
-                //        current_cost += matr[path[j]][path[j + 1]];
-                //    }
+                std::chrono::high_resolution_clock::time_point timeBeginExact = std::chrono::high_resolution_clock::now();
 
-                //    if (matr[path[N - 1]][path[0]] == 0) valid_route = false;
-                //    else current_cost += matr[path[N - 1]][path[0]];
+                do {
+                    int current_cost = 0;
+                    bool valid_route = true;
 
-                //    if (valid_route && current_cost < min_cost) {
-                //        min_cost = current_cost;
-                //    }
+                    for (int j = 0; j < N - 1; j++) {
+                        if (matr[path[j]][path[j + 1]] == 0) { valid_route = false; break; }
+                        current_cost += matr[path[j]][path[j + 1]];
+                    }
 
-                //} while (next_deykstra_permutation(path, N));
+                    if (matr[path[N - 1]][path[0]] == 0) valid_route = false;
+                    else current_cost += matr[path[N - 1]][path[0]];
 
-                //std::chrono::high_resolution_clock::time_point timeEndExact = std::chrono::high_resolution_clock::now();
-                //std::chrono::milliseconds intervalExact = std::chrono::duration_cast<std::chrono::milliseconds>(timeEndExact - timeBeginExact);
+                    if (valid_route && current_cost < min_cost) {
+                        min_cost = current_cost;
+                    }
 
-                //std::cout << "Стоимость: " << min_cost << std::endl;
-                //std::cout << "Время: " << intervalExact.count() / 1000.0 << " сек." << std::endl;
+                } while (next_deykstra_permutation(path, N));
 
-                //delete[] path;
-            
+                std::chrono::high_resolution_clock::time_point timeEndExact = std::chrono::high_resolution_clock::now();
+                std::chrono::milliseconds intervalExact = std::chrono::duration_cast<std::chrono::milliseconds>(timeEndExact - timeBeginExact);
 
-           
-            int* path_greedy = new int[N];
-            path_greedy[0] = 0;
-            int total_cost = 0;
+                std::cout << "Стоимость: " << min_cost << std::endl;
+                std::cout << "Время: " << intervalExact.count() / 1000.0 << " сек." << std::endl;
 
-            std::chrono::high_resolution_clock::time_point timeBeginGreedy = std::chrono::high_resolution_clock::now();
+                delete[] path;
 
-            Greedy_Worst_Row_Iterative(matr, N, path_greedy, total_cost);
 
-            std::chrono::high_resolution_clock::time_point timeEndGreedy = std::chrono::high_resolution_clock::now();
-            std::chrono::milliseconds intervalGreedy = std::chrono::duration_cast<std::chrono::milliseconds>(timeEndGreedy - timeBeginGreedy);
 
-            std::cout << "[Метод худшей строки (итеративный)]" << std::endl;
-            std::cout << "Стоимость: " << total_cost << std::endl;
-            std::cout << "Время: " << intervalGreedy.count() / 1000.0 << " сек." << std::endl;
+                int* path_greedy = new int[N];
+                path_greedy[0] = 0;
+                int total_cost = 0;
 
-           
-            Destroy_Matr(matr, N);
-            delete[] path_greedy;
+                std::chrono::high_resolution_clock::time_point timeBeginGreedy = std::chrono::high_resolution_clock::now();
+
+                Greedy_Worst_Row_Iterative(matr, N, path_greedy, total_cost);
+
+                std::chrono::high_resolution_clock::time_point timeEndGreedy = std::chrono::high_resolution_clock::now();
+                std::chrono::milliseconds intervalGreedy = std::chrono::duration_cast<std::chrono::milliseconds>(timeEndGreedy - timeBeginGreedy);
+
+                std::cout << "[Метод худшей строки (итеративный)]" << std::endl;
+                std::cout << "Стоимость: " << total_cost << std::endl;
+                std::cout << "Время: " << intervalGreedy.count() / 1000.0 << " сек." << std::endl;
+
+
+                Destroy_Matr(matr, N);
+                delete[] path_greedy;
+            }
         }
+        return 0;
     }
-    return 0;
-}
-

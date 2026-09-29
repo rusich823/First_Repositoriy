@@ -55,8 +55,8 @@ void Greedy_Worst_Row_Iterative(int** matr, int n, int* path, int& total_cost) {
             sum_str[i] = sum;
         }
 
-        int max_sum = -2;
-        int indx = -1;
+        int max_sum = 0;
+        int indx = 0;
         for (int i = 0; i < n; i++) {
             if (sum_str[i] > max_sum) {
                 max_sum = sum_str[i];
@@ -66,8 +66,8 @@ void Greedy_Worst_Row_Iterative(int** matr, int n, int* path, int& total_cost) {
 
         if (indx <0 || indx >= n) break;
 
-        int min_rl = 2147483647;
-        int best_city = -1;
+        int min_rl = 0;
+        int best_city = 0;
         for (int i = 0; i < n; i++) {
             if (!isVisited(path, count, i) && matr[indx][i] != 0) {
                 if (matr[indx][i] < min_rl) {
