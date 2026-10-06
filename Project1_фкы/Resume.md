@@ -18,87 +18,45 @@
 =============================================
 --- ТЕСТИРОВАНИЕ ДЛЯ N = 4 ---
 =============================================
-  Run #1 | Exact [Min: 166, Time: 0.000s] | WorstRow [Cost: 237, Time: 0.000s] | Quality: 74.3%
-  Run #2 | Exact [Min: 122, Time: 0.000s] | WorstRow [Cost: 228, Time: 0.000s] | Quality: 62.1%
-  Run #3 | Exact [Min: 173, Time: 0.000s] | WorstRow [Cost: 206, Time: 0.000s] | Quality: 87.9%
-  Run #4 | Exact [Min: 160, Time: 0.000s] | WorstRow [Cost: 329, Time: 0.000s] | Quality: 34.3%
+  Run #1 | Exact [Min: 166, Max: 262, Time: 0.000s] | WorstRow [Cost: 237, Time: 0.000s] | Quality: 74.3%
+  Run #2 | Exact [Min: 122, Max: 401, Time: 0.000s] | WorstRow [Cost: 228, Time: 0.000s] | Quality: 62.1%
+  Run #3 | Exact [Min: 173, Max: 445, Time: 0.000s] | WorstRow [Cost: 206, Time: 0.000s] | Quality: 87.9%
+  Run #4 | Exact [Min: 160, Max: 417, Time: 0.000s] | WorstRow [Cost: 329, Time: 0.000s] | Quality: 34.3%
 
 =============================================
 --- ТЕСТИРОВАНИЕ ДЛЯ N = 6 ---
 =============================================
-  Run #1 | Exact [Min: 170, Time: 0.000s] | WorstRow [Cost: 316, Time: 0.000s] | Quality: 70.1%
-  Run #2 | Exact [Min: 181, Time: 0.000s] | WorstRow [Cost: 390, Time: 0.000s] | Quality: 54.4%
-  Run #3 | Exact [Min: 208, Time: 0.000s] | WorstRow [Cost: 438, Time: 0.000s] | Quality: 49.3%
-  Run #4 | Exact [Min: 194, Time: 0.000s] | WorstRow [Cost: 330, Time: 0.000s] | Quality: 69.1%
+  Run #1 | Exact [Min: 170, Max: 659, Time: 0.000s] | WorstRow [Cost: 316, Time: 0.000s] | Quality: 70.1%
+  Run #2 | Exact [Min: 181, Max: 639, Time: 0.000s] | WorstRow [Cost: 390, Time: 0.000s] | Quality: 54.4%
+  Run #3 | Exact [Min: 208, Max: 661, Time: 0.000s] | WorstRow [Cost: 438, Time: 0.000s] | Quality: 49.3%
+  Run #4 | Exact [Min: 194, Max: 634, Time: 0.000s] | WorstRow [Cost: 330, Time: 0.000s] | Quality: 69.1%
 
 =============================================
 --- ТЕСТИРОВАНИЕ ДЛЯ N = 8 ---
 =============================================
-  Run #1 | Exact [Min: 230, Time: 0.000s] | WorstRow [Cost: 465, Time: 0.000s] | Quality: 67.3%
-  Run #2 | Exact [Min: 173, Time: 0.000s] | WorstRow [Cost: 619, Time: 0.000s] | Quality: 44.5%
-  Run #3 | Exact [Min: 244, Time: 0.000s] | WorstRow [Cost: 573, Time: 0.000s] | Quality: 52.8%
-  Run #4 | Exact [Min: 208, Time: 0.000s] | WorstRow [Cost: 597, Time: 0.000s] | Quality: 47.7%
+  Run #1 | Exact [Min: 230, Max: 948, Time: 0.000s] | WorstRow [Cost: 465, Time: 0.000s] | Quality: 67.3%
+  Run #2 | Exact [Min: 173, Max: 976, Time: 0.000s] | WorstRow [Cost: 619, Time: 0.000s] | Quality: 44.5%
+  Run #3 | Exact [Min: 244, Max: 941, Time: 0.000s] | WorstRow [Cost: 573, Time: 0.000s] | Quality: 52.8%
+  Run #4 | Exact [Min: 208, Max: 951, Time: 0.000s] | WorstRow [Cost: 597, Time: 0.000s] | Quality: 47.7%
 
 =============================================
 --- ТЕСТИРОВАНИЕ ДЛЯ N = 10 ---
 =============================================
-  Run #1 | Exact [Min: 283, Time: 0.009s] | WorstRow [Cost: 596, Time: 0.000s] | Quality: 64.9%
-  Run #2 | Exact [Min: 235, Time: 0.008s] | WorstRow [Cost: 660, Time: 0.000s] | Quality: 57.3%
-  Run #3 | Exact [Min: 253, Time: 0.008s] | WorstRow [Cost: 775, Time: 0.000s] | Quality: 45.4%
-  Run #4 | Exact [Min: 275, Time: 0.009s] | WorstRow [Cost: 703, Time: 0.000s] | Quality: 54.1%
+  Run #1 | Exact [Min: 283, Max: 1175, Time: 0.009s] | WorstRow [Cost: 596, Time: 0.000s] | Quality: 64.9%
+  Run #2 | Exact [Min: 235, Max: 1232, Time: 0.008s] | WorstRow [Cost: 660, Time: 0.000s] | Quality: 57.3%
+  Run #3 | Exact [Min: 253, Max: 1206, Time: 0.008s] | WorstRow [Cost: 775, Time: 0.000s] | Quality: 45.4%
+  Run #4 | Exact [Min: 275, Max: 1208, Time: 0.009s] | WorstRow [Cost: 703, Time: 0.000s] | Quality: 54.1%
 
 =============================================
 --- ТЕСТИРОВАНИЕ ДЛЯ N = 12 ---
 =============================================
-  Run #1 | Exact [Min: 205, Time: 1.166s] | WorstRow [Cost: 664, Time: 0.000s] | Quality: 68.3%
-  Run #2 | Exact [Min: 240, Time: 1.181s] | WorstRow [Cost: 821, Time: 0.000s] | Quality: 54.3%
-  Run #3 | Exact [Min: 304, Time: 1.143s] | WorstRow [Cost: 840, Time: 0.000s] | Quality: 53.6%
-  Run #4 | Exact [Min: 298, Time: 1.144s] | WorstRow [Cost: 747, Time: 0.000s] | Quality: 62.4%
+  Run #1 | Exact [Min: 205, Max: 1654, Time: 1.166s] | WorstRow [Cost: 664, Time: 0.000s] | Quality: 68.3%
+  Run #2 | Exact [Min: 240, Max: 1511, Time: 1.181s] | WorstRow [Cost: 821, Time: 0.000s] | Quality: 54.3%
+  Run #3 | Exact [Min: 304, Max: 1459, Time: 1.143s] | WorstRow [Cost: 840, Time: 0.000s] | Quality: 53.6%
+  Run #4 | Exact [Min: 298, Max: 1492, Time: 1.144s] | WorstRow [Cost: 747, Time: 0.000s] | Quality: 62.4%
 
   ```
-  ### Алгоритм худшей строки 
 
-  ```text
-  =============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 4 ---
-=============================================
-  Run #1 | Exact [Time: 0.000s] | WorstRow [Cost: 79,  Time: 0.000s] | Quality: 100.0%
-  Run #2 | Exact [Time: 0.000s] | WorstRow [Cost: 134, Time: 0.000s] | Quality: 93.5%
-  Run #3 | Exact [Time: 0.000s] | WorstRow [Cost: 186, Time: 0.000s] | Quality: 88.0%
-  Run #4 | Exact [Time: 0.000s] | WorstRow [Cost: 161, Time: 0.000s] | Quality: 91.2%
-
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 6 ---
-=============================================
-  Run #1 | Exact [Time: 0.000s] | WorstRow [Cost: 215, Time: 0.000s] | Quality: 92.5%
-  Run #2 | Exact [Time: 0.000s] | WorstRow [Cost: 270, Time: 0.000s] | Quality: 87.0%
-  Run #3 | Exact [Time: 0.000s] | WorstRow [Cost: 301, Time: 0.000s] | Quality: 85.5%
-  Run #4 | Exact [Time: 0.000s] | WorstRow [Cost: 277, Time: 0.000s] | Quality: 86.8%
-
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 8 ---
-=============================================
-  Run #1 | Exact [Time: 0.001s] | WorstRow [Cost: 461, Time: 0.000s] | Quality: 84.1%
-  Run #2 | Exact [Time: 0.001s] | WorstRow [Cost: 375, Time: 0.000s] | Quality: 92.3%
-  Run #3 | Exact [Time: 0.001s] | WorstRow [Cost: 423, Time: 0.000s] | Quality: 87.8%
-  Run #4 | Exact [Time: 0.001s] | WorstRow [Cost: 420, Time: 0.000s] | Quality: 88.1%
-
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 10 ---
-=============================================
-  Run #1 | Exact [Time: 0.112s] | WorstRow [Cost: 542, Time: 0.000s] | Quality: 90.4%
-  Run #2 | Exact [Time: 0.121s] | WorstRow [Cost: 576, Time: 0.000s] | Quality: 88.2%
-  Run #3 | Exact [Time: 0.124s] | WorstRow [Cost: 509, Time: 0.000s] | Quality: 92.1%
-  Run #4 | Exact [Time: 0.116s] | WorstRow [Cost: 550, Time: 0.000s] | Quality: 89.8%
-
-=============================================
---- ТЕСТИРОВАНИЕ ДЛЯ N = 12 ---
-=============================================
-  Run #1 | Exact [Time: 15.105s] | WorstRow [Cost: 687, Time: 0.000s] | Quality: 91.3%
-  Run #2 | Exact [Time: 14.997s] | WorstRow [Cost: 671, Time: 0.000s] | Quality: 92.4%
-  Run #3 | Exact [Time: 21.058s] | WorstRow [Cost: 684, Time: 0.000s] | Quality: 91.5%
-  Run #4 | Exact [Time: 22.282s] | WorstRow [Cost: 681, Time: 0.000s] | Quality: 91.7%
-```
 
 ### Тест 2
 
