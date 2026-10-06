@@ -62,22 +62,22 @@
 
    ### Алгоритм худшей строки с матрицой N=100 и N=1000
   ```text
-  
-=============================================
+  =============================================
 --- ТЕСТИРОВАНИЕ ДЛЯ N = 100 ---
 =============================================
-  Run #1 | Exact [Физически невозможен]   | WorstRow [Cost: 6214, Time: 0.019s] | Quality: Стабильно
-  Run #2 | Exact [Физически невозможен]   | WorstRow [Cost: 5939, Time: 0.017s] | Quality: Стабильно
-  Run #3 | Exact [Физически невозможен]   | WorstRow [Cost: 5955, Time: 0.017s] | Quality: Стабильно
-  Run #4 | Exact [Физически невозможен]   | WorstRow [Cost: 6284, Time: 0.018s] | Quality: Стабильно
+  Run #1 | Exact [Физически невозможен]   | WorstRow [Cost: 6214, Time: 0.019s] | Quality: Н/Д
+  Run #2 | Exact [Физически невозможен]   | WorstRow [Cost: 5939, Time: 0.017s] | Quality: Н/Д
+  Run #3 | Exact [Физически невозможен]   | WorstRow [Cost: 5955, Time: 0.017s] | Quality: Н/Д
+  Run #4 | Exact [Физически невозможен]   | WorstRow [Cost: 6284, Time: 0.018s] | Quality: Н/Д
 
 =============================================
 --- ТЕСТИРОВАНИЕ ДЛЯ N = 1000 ---
 =============================================
-  Run #1 | Exact [Физически невозможен]   | WorstRow [Cost: 57619, Time: 124.435s] | Quality: Высокое
-  Run #2 | Exact [Физически невозможен]   | WorstRow [Cost: 58762, Time: 134.293s] | Quality: Высокое
-  Run #3 | Exact [Физически невозможен]   | WorstRow [Cost: 57451, Time: 133.670s] | Quality: Высокое
-  Run #4 | Exact [Физически невозможен]   | WorstRow [Cost: 57352, Time: 133.719s] | Quality: Высокое
+  Run #1 | Exact [Физически невозможен]   | WorstRow [Cost: 57619, Time: 124.435s] | Quality: Н/Д
+  Run #2 | Exact [Физически невозможен]   | WorstRow [Cost: 58762, Time: 134.293s] | Quality: Н/Д
+  Run #3 | Exact [Физически невозможен]   | WorstRow [Cost: 57451, Time: 133.670s] | Quality: Н/Д
+  Run #4 | Exact [Физически невозможен]   | WorstRow [Cost: 57352, Time: 133.719s] | Quality: Н/Д
+
 ```
 
 ## 3. Выводы по работе
