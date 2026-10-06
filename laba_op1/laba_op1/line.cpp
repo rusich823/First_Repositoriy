@@ -31,3 +31,14 @@ bool line::Perpendicul(const float a, const float c) const
 bool line::isThroughOrigin() const {
 	return (c_ == 0.0);
 }
+
+
+bool line::operator||(const line& other) const {
+	return (a_ * other.get_b() == b_ * other.get_a());
+}
+
+
+bool line::pendicu_2_line(const line& other) const
+{
+	return std::abs((a_ * other.a_) + (b_ * other.b_)) == 0;
+}

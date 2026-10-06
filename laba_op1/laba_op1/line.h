@@ -9,7 +9,8 @@ public:
 
 	bool isThroughOrigin() const;
 	bool Perpendicul(const float a, const float c) const;
-
+	bool operator||(const line& other) const;
+	bool pendicu_2_line(const line& other) const;
 
 	float get_a() const;
 	float get_b() const;
