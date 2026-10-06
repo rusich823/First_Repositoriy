@@ -1,7 +1,7 @@
 #pragma once
 class line {
 public:
-	
+	line(float a = 0.0, float b = 0.0, float c = 0.0);
 
 	float get_a() const;
 	float get_b() const;
