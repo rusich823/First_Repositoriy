@@ -20,3 +20,14 @@ void line::output() const
 {
 	std::cout << a_ << "x + " << b_ << "y + " << c_ << " = 0" << std::endl;
 }
+
+
+
+
+bool line::Perpendicul(const float a, const float c) const
+{
+	return (a != 0 && c != 0);
+}
+bool line::isThroughOrigin() const {
+	return (c_ == 0.0);
+}

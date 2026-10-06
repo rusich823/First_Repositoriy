@@ -7,6 +7,8 @@ public:
 	void output() const;
 
 
+	bool isThroughOrigin() const;
+	bool Perpendicul(const float a, const float c) const;
 
 
 	float get_a() const;
