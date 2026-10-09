@@ -108,3 +108,15 @@ float line::get_b() const {
 float line::get_c() const {
 	return c_;
 }
+
+void line::set_a(float a) {
+	a_ = a;
+}
+
+void line::set_b(float b) {
+	b_ = b;
+}
+
+void line::set_c(float c) {
+	c_ = c;
+}

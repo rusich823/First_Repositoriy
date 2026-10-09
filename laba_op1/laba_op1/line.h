@@ -24,6 +24,12 @@ public:
 	float distan() const;
 	float right_angle(const line& other) const;	
 
+
+	void set_a(float a);
+	void set_b(float b);
+	void set_c(float c);
+
+
 	float get_a() const;
 	float get_b() const;
 	float get_c() const;
