@@ -3,7 +3,7 @@
 #include <math.h>
 
 
-line::line(const float a, const float b, const float c)
+Line::Line(const float a, const float b, const float c)
 {
 	a_ = a;
 	b_ = b;
@@ -11,50 +11,50 @@ line::line(const float a, const float b, const float c)
 }
 
 
-void line::input()
+void Line::input()
 {
 	std::cin >> a_ >> b_ >> c_;
 }
 
-void line::output() const
+void Line::output() const
 {
 	std::cout << a_ << "x + " << b_ << "y + " << c_ << " = 0" << std::endl;
 }
 
 
-bool line::hasPoint(const Point& p) const {
+bool Line::hasPoint(const float x, const float y) const {
 
-	float result = (a_ * p.x) + (b_ * p.y) + c_;
+	float result = (a_ * x) + (b_ * y) + c_;
 
 	return std::abs(result) < 0.000001f;
 }
 
 
 
-bool line::Perpendicul() const
+bool Line::perpendicul() const
 {
 	return (a_ != 0 && c_ != 0);
 }
 
-bool line::isThroughOrigin() const {
+bool Line::isThroughOrigin() const {
 
 	return (c_ == 0.0);
 }
 
 
-bool line::operator||(const line& other) const {
+bool Line::operator||(const Line& other) const {
 
 	return (a_ * other.b_ == b_ * other.a_);
 
 }
 
 
-bool line::pendicu_2_line(const line& other) const
+bool Line::pendicu_2_line(const Line& other) const
 {
 	return std::abs((a_ * other.a_) + (b_ * other.b_)) == 0;
 }
 
-float line::atngular_kof() const
+float Line::atngular_kof() const
 {
 	if (a_ != 0.0f) {
 
@@ -65,13 +65,13 @@ float line::atngular_kof() const
 	return 0.0f;
 }
 
-float line::distan() const
+float Line::distan() const
 {
 	return std::abs(c_) / std::sqrt(a_ * a_ + b_ * b_);
 }
 
 
-float line::right_angle(const line& other) const
+float Line::right_angle(const Line& other) const
 {
 	float denominator = std::sqrt(a_ * a_ + b_ * b_) * std::sqrt(other.a_ * other.a_ + other.b_ * other.b_);
 
@@ -97,26 +97,26 @@ float line::right_angle(const line& other) const
 	return angle_in_degrees;
 }
 
-float line::get_a() const {
+float Line::get_a() const {
 	return a_;
 }
 
-float line::get_b() const {
+float Line::get_b() const {
 	return b_;
 }
 
-float line::get_c() const {
+float Line::get_c() const {
 	return c_;
 }
 
-void line::set_a(float a) {
+void Line::set_a(float a) {
 	a_ = a;
 }
 
-void line::set_b(float b) {
+void Line::set_b(float b) {
 	b_ = b;
 }
 
-void line::set_c(float c) {
+void Line::set_c(float c) {
 	c_ = c;
 }

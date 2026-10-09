@@ -1,33 +1,29 @@
 #pragma once
 
-struct Point {
-	float x;
-	float y;
-};
 
-class line {
+class Line {
 public:
-	line() = default;
-	line(float a , float b , float c );
+	Line() = default;
+	Line(float a , float b , float c );
 
 	void input();
 	void output() const;
 
 
 	bool isThroughOrigin() const;
-	bool Perpendicul() const;
-	bool operator||(const line& other) const;
-	bool pendicu_2_line(const line& other) const;
-	bool hasPoint(const Point& p) const;
+	bool perpendicul() const;
+	bool operator||(const Line& other) const;
+	bool pendicu_2_line(const Line& other) const;
+	bool hasPoint(const float x, const float y) const;
 
 	float atngular_kof() const;
 	float distan() const;
-	float right_angle(const line& other) const;	
+	float right_angle(const Line& other) const;	
 
 
-	void set_a(float a);
-	void set_b(float b);
-	void set_c(float c);
+	void set_a(const float a);
+	void set_b(const float b);
+	void set_c(const float c);
 
 
 	float get_a() const;
