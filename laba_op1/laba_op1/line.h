@@ -7,21 +7,22 @@ struct Point {
 
 class line {
 public:
-	line(float a = 0.0, float b = 0.0, float c = 0.0);
+	line() = default;
+	line(float a , float b , float c );
 
 	void input();
 	void output() const;
 
 
 	bool isThroughOrigin() const;
-	bool Perpendicul(const float a, const float c) const;
+	bool Perpendicul() const;
 	bool operator||(const line& other) const;
 	bool pendicu_2_line(const line& other) const;
 	bool hasPoint(const Point& p) const;
 
-	float atngular_kof(const float a) const;
-	float distan(const float a, const float c) const;
-	float right_angle(const line& other) const;
+	float atngular_kof() const;
+	float distan() const;
+	float right_angle(const line& other) const;	
 
 	float get_a() const;
 	float get_b() const;
