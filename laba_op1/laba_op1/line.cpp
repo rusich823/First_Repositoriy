@@ -44,7 +44,7 @@ bool line::isThroughOrigin() const {
 
 bool line::operator||(const line& other) const {
 
-	return (a_ * other.get_b() == b_ * other.get_a());
+	return (a_ * other.b_ == b_ * other.a_);
 
 }
 
