@@ -3,6 +3,9 @@
 #include <vector>
 #include <locale>
 #include "Bm_.h"
+
+
+
 void findFirstBM(const std::string& text, const std::string& sub) {
     int n = text.size();
     int m = sub.size();
@@ -38,4 +41,44 @@ void findFirstBM(const std::string& text, const std::string& sub) {
     }
 
     std::cout << "Подстрока не найдена." << std::endl;
+}
+
+std::vector<int> findAllBM(const std::string& text, const std::string& sub) {
+    int n = text.size();
+    int m = sub.size();
+    std::vector<int> positions;
+
+    if (m == 0 || m > n) {
+        return positions;
+    }
+
+    std::vector<int> tabl(256, m);
+    for (int i = 0; i < m - 1; i++) {
+        tabl[(unsigned char)sub[i]] = m - 1 - i;
+    }
+
+    for (int i = m - 1; i < n; ) {
+        int k = i;
+        int j = m - 1;
+
+        while (j >= 0) {
+            if (text[k] == sub[j]) {
+                j--;
+                k--;
+            }
+            else {
+                break;
+            }
+        }
+
+        if (j < 0) {
+            positions.push_back(k + 1);
+            i += 1;
+        }
+        else {
+            i = i + tabl[(unsigned char)text[i]];
+        }
+    }
+
+    return positions;
 }
