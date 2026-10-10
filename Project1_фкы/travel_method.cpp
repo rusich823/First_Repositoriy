@@ -9,6 +9,7 @@ void swap(int& a, int& b) {
 }
 
 
+
 bool next_deykstra_permutation(int* path, int N) {
 
     int i = N - 2;
@@ -54,7 +55,6 @@ void Greedy_Worst_Row_Iterative(int** matr, int n, int* path, int& total_cost) {
             sum_str[i] = sum;
         }
 
-        int max_sum = -1;
         int indx = -1;
         for (int i = 0; i < n; i++) {
             if (sum_str[i] > max_sum) {
@@ -65,7 +65,6 @@ void Greedy_Worst_Row_Iterative(int** matr, int n, int* path, int& total_cost) {
 
         if (indx <0 || indx >= n) break;
 
-        int min_rl = 1001;
         int best_city = -1;
         for (int i = 0; i < n; i++) {
             if (!isVisited(path, count, i) && matr[indx][i] != 0) {
