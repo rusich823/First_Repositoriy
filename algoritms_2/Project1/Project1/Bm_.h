@@ -3,3 +3,4 @@
 
 void findFirstBM(const std::string& text, const std::string& sub);
 std::vector<int> findAllBM(const std::string& text, const std::string& sub);
+std::vector<int> findAllBM_gr(const std::string& text, const std::string& sub, int start, int end);
