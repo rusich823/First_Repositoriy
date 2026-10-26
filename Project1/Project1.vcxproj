@@ -20,10 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\OneDrive\Документы\ammy[1]\ammy\Main.cpp" />
-    <ClCompile Include="dynamicarray.cpp" />
+    <ClCompile Include="DynamicArray.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dynamicarray.h" />
+    <ClInclude Include="DynamicArray.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 
 class DynamicArray
 {
@@ -17,12 +16,16 @@ public:
 
     DynamicArray& operator=(const DynamicArray& other);
     DynamicArray& operator=(DynamicArray&& other);
+    DynamicArray& operator+=(const int value);
+    DynamicArray operator+(const int newarrayData) const;
 
     int getLength() const;
     int getCapacity() const;
 
     int& operator[](const int index);
     const int& operator[](const int index) const;
+    
+
 
     void swap(DynamicArray& other);
 

@@ -18,12 +18,12 @@
     <ClCompile Include="..\..\..\..\..\OneDrive\Документы\ammy[1]\ammy\Main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="dynamicarray.cpp">
+    <ClCompile Include="DynamicArray.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dynamicarray.h">
+    <ClInclude Include="DynamicArray.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>

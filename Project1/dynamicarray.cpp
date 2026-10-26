@@ -149,3 +149,29 @@ void DynamicArray::resize(int newCapacity)
     arrayData_ = newData;
     arrayCapacity_ = newCapacity;
 }
+// оператор добавления в конец массива число
+DynamicArray& DynamicArray::operator+=(const int value) {
+    if (arrayLength_ == arrayCapacity_)
+    {
+        int newCapacity;
+        if (arrayCapacity_ == 0) {
+            newCapacity = 1;
+        }
+        else {
+            newCapacity = arrayCapacity_ * 2;
+        }
+        resize(newCapacity);
+    }
+
+    arrayData_[arrayLength_] = value;
+    arrayLength_++;
+
+    return *this;
+}
+//оператор добавлени в конец числа
+DynamicArray DynamicArray::operator+(const int newarrayData) const
+{
+    DynamicArray newArray(*this);
+    newArray += newarrayData;
+    return newArray;
+}
