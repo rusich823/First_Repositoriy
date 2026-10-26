@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\OneDrive\Документы\ammy[1]\ammy\dynamicarray.h">
+    <ClCompile Include="..\..\..\..\..\OneDrive\Документы\ammy[1]\ammy\Main.cpp">
       <Filter>Исходные файлы</Filter>
-    </ClInclude>
+    </ClCompile>
+    <ClCompile Include="dynamicarray.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\OneDrive\Документы\ammy[1]\ammy\main.cpp">
+    <ClInclude Include="dynamicarray.h">
       <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\OneDrive\Документы\ammy[1]\ammy\dynamicarray.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
+    </ClInclude>
   </ItemGroup>
 </Project>
