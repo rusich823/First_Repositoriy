@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 class DynamicArray
 {
@@ -29,7 +30,6 @@ public:
     int findMax() const;
     int findMin() const;
 
-    void resize(int newCapacity);
     void swap(DynamicArray& other);
     void sort();
 
@@ -39,13 +39,17 @@ public:
     bool removeAll(int value);
     bool operator==(const DynamicArray& other) const;
     bool operator!=(const DynamicArray& other) const;
-    friend std::ostream& operator<<(std::ostream& out, const DynamicArray& s);
-    friend    std::istream& operator >>(std::istream& inp, DynamicArray& s);
+
+    friend std::ostream& operator <<(std::ostream& out, const DynamicArray& s);
+    friend   std::istream& operator >>(std::istream& inp, DynamicArray& s);
 
 
 
     iterator begin();
     iterator end();
+    void insert(iterator pos, int value);
+    bool erase(iterator pos);
+
 
 private:
 
@@ -63,11 +67,14 @@ public:
     iterator() = default;
     iterator(int* arrayData, int elementIndex);
 
-    bool operator!=(const iterator& otherIterator);
+    bool operator!=(const iterator& otherIterator) const;
+    bool operator==(const iterator& other) const;
     iterator& operator++();
     iterator operator++(int);
+    iterator operator-(int n) const;
     int& operator*();
-    int& operator*();
+    int getelementIndex() const;
+
 
 private:
 

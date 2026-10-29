@@ -354,14 +354,54 @@ int& DynamicArray::iterator::operator*()
 {
     return arrayData_[elementIndex_];
 }
+//
+DynamicArray::iterator& DynamicArray::iterator::operator++()
+{
+    elementIndex_++;
+    return *this;
+}
+//
+DynamicArray::iterator DynamicArray::iterator::operator++(int) {
+    iterator old(*this);
+    ++(*this);
+    return old;
+}
+DynamicArray::iterator DynamicArray::iterator::operator-(int n) const {
+   
+    return iterator(arrayData_,elementIndex_-n);
+}
+//
+bool DynamicArray::iterator::operator!=(const iterator& otherIterator) const{
+    return !(*this==otherIterator);
+}
+//
+bool DynamicArray::iterator::operator==(const iterator& other) const {
+    if (arrayData_ == other.arrayData_ && elementIndex_ == other.elementIndex_) return true;
+    return false;
+}
+//
+int DynamicArray::iterator::getelementIndex() const {
+    return elementIndex_;
+}
 
 
 
+void DynamicArray::insert(iterator pos, int value)
+{
+    int index = pos.getelementIndex();
+    insert(index, value);
+}
+
+bool DynamicArray::erase(iterator pos) {
+    int index = pos.getelementIndex();
+    return removeAt(index);
+}
 
 
+DynamicArray::iterator DynamicArray::begin() {
+    return iterator(arrayData_, 0);
+}
 
-
-
-
-
-
+DynamicArray::iterator DynamicArray::end() {
+    return iterator(arrayData_, arrayLength_);
+}
