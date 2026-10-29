@@ -168,6 +168,41 @@ DynamicArray& DynamicArray::operator+=(const int value) {
 
     return *this;
 }
+//
+DynamicArray& DynamicArray::operator+=(const DynamicArray& other) {
+    if (arrayCapacity_ < arrayLength_ + other.arrayLength_) {
+        resize(arrayLength_ + other.arrayLength_);
+    }
+    for (int j=0; j < other.arrayLength_; j++) {
+        arrayData_[arrayLength_ + j] = other.arrayData_[j];
+    }
+    arrayLength_ += other.arrayLength_;
+    return *this;
+}
+//
+bool DynamicArray::operator==(const DynamicArray& other) const {
+    if (arrayLength_ == other.arrayLength_) {
+        for (int i = 0; i < arrayLength_; i++) {
+            if (arrayData_[i] != other.arrayData_[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    return false;
+}
+//
+bool DynamicArray::operator!=(const DynamicArray& other) const {
+    if (arrayLength_ != other.arrayLength_) return true;
+    return !(*this == other);
+}
+
+//
+DynamicArray DynamicArray::operator+(const  DynamicArray& other) const {
+    DynamicArray newArray(*this);
+    newArray += other;
+    return newArray;
+}
 //оператор добавлени в конец числа
 DynamicArray DynamicArray::operator+(const int newarrayData) const
 {
@@ -175,7 +210,7 @@ DynamicArray DynamicArray::operator+(const int newarrayData) const
     newArray += newarrayData;
     return newArray;
 }
-//поиск
+// метод поиска элемента по значению (возвращает индекс или -1)
 int DynamicArray::find(const int value) const
 {
     for (int i = 0; i < arrayLength_; i++) {
@@ -183,8 +218,9 @@ int DynamicArray::find(const int value) const
     }
     return -1;
 }
-//поиск max элемента в массиве
-int  DynamicArray::findMax() const {
+
+// поиск максимального элемента в массиве
+int DynamicArray::findMax() const {
     if (arrayLength_) {
         int max = arrayData_[0];
         for (int i = 1; i < arrayLength_; i++) {
@@ -194,8 +230,9 @@ int  DynamicArray::findMax() const {
     }
     else return 0;
 }
-//нахождение индекса min элемента
-int  DynamicArray::findMin() const {
+
+//  поиск минимального элемента в массиве
+int DynamicArray::findMin() const {
     if (arrayLength_) {
         int min = arrayData_[0];
         for (int i = 1; i < arrayLength_; i++) {
@@ -205,10 +242,11 @@ int  DynamicArray::findMin() const {
     }
     else return 0;
 }
-//сортировка по возрастанию
-void  DynamicArray::sort() {
+
+//  сортировка массива по возрастанию
+void DynamicArray::sort() {
     if (arrayLength_) {
-        int a =0;
+        int a = 0;
         for (int i = 0; i < arrayLength_ - 1; i++) {
             for (int j = 0; j < arrayLength_ - 1; j++) {
                 if (arrayData_[j + 1] < arrayData_[j]) {
@@ -221,9 +259,10 @@ void  DynamicArray::sort() {
     }
     else std::cout << "error";
 }
-//вставка по индексу
-bool DynamicArray::insert(int index, int value) {   
-    if (index > 0 && index < arrayLength_) {
+
+//  вставка элемента по индексу
+bool DynamicArray::insert(int index, int value) {
+    if (index >= 0 && index <= arrayLength_) {
         if (arrayLength_ == arrayCapacity_)
         {
             int newCapacity;
@@ -244,3 +283,85 @@ bool DynamicArray::insert(int index, int value) {
     }
     return false;
 }
+//
+bool DynamicArray::removeAt(int index) {
+    if (index >= 0 && index < arrayLength_) {
+        for (int i = index; i < arrayLength_-1; i++) {
+            arrayData_[i ] = arrayData_[i+1];
+        }
+        arrayLength_--;
+        return true;
+    }
+    return false;
+}
+//
+bool DynamicArray::removeByValue(int value) {
+    if (arrayLength_) {
+        for (int i = 0; i < arrayLength_; i++) {
+            if (arrayData_[i] == value) {
+                removeAt(i);
+                return true;
+            }
+        }
+        return false;
+    }
+}
+//
+bool DynamicArray::removeAll(int value) {
+    if (arrayLength_) {
+        for (int i = 0; i < arrayLength_; i++) {
+            if (arrayData_[i] == value) {
+                removeAt(i); 
+                i--;
+            }
+        }
+    return true;
+    }
+    return false;
+}
+// потоковый вывод
+std::ostream& operator<<(std::ostream& out, const DynamicArray& s)
+{
+    for (int i = 0; i < s.arrayLength_; i++) {
+        out << s.arrayData_[i] << " ";
+    }
+    return out;
+}
+
+std::istream& operator>>(std::istream& inp, DynamicArray& s)
+{
+    int count = 0;
+    inp >> count;
+    std::cout << "\nВведите массив чисел, в конце Enter: ";
+
+    s.arrayLength_ = 0;
+    for (int i = 0; i < count; i++) {
+        int value = 0;
+        inp >> value;
+
+        s += value;
+    }
+
+    return inp;
+}
+
+// итераторы
+DynamicArray::iterator::iterator(int* arrayData, int elementIn) : arrayData_(arrayData), elementIndex_(elementIn)
+{
+}
+//
+int& DynamicArray::iterator::operator*()
+{
+    return arrayData_[elementIndex_];
+}
+
+
+
+
+
+
+
+
+
+
+
