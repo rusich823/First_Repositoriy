@@ -6,7 +6,7 @@ class DynamicArray
 public:
 
     class iterator;
-
+    class const_iterator;
 
     DynamicArray();
 
@@ -47,6 +47,12 @@ public:
 
     iterator begin();
     iterator end();
+
+    const_iterator begin() const;
+    const_iterator end() const;
+    const_iterator cbegin() const; 
+    const_iterator cend() const;
+
     void insert(iterator pos, int value);
     bool erase(iterator pos);
 
@@ -79,5 +85,26 @@ public:
 private:
 
     int* arrayData_ = nullptr;
+    int elementIndex_ = 0;
+};
+class DynamicArray::const_iterator {
+public:
+    const_iterator() = default;
+   
+    const_iterator(const int* arrayData, int elementIndex);
+
+    bool operator!=(const const_iterator& otherIterator) const;
+    bool operator==(const const_iterator& other) const;
+    const_iterator& operator++();
+    const_iterator operator++(int);
+    const_iterator operator-(int n) const;
+
+    
+    const int& operator*() const;
+
+    int getelementIndex() const;
+
+private:
+    const int* arrayData_ = nullptr;
     int elementIndex_ = 0;
 };

@@ -2,7 +2,11 @@
 #include <iostream>
 #include "DynamicArray.h"
 
-// 1. Конструктор по умолчанию (без выделения памяти заранее)
+
+
+
+
+// Конструктор по умолчанию (без выделения памяти заранее)
 DynamicArray::DynamicArray()
     : arrayData_(nullptr),
     arrayLength_(0),
@@ -11,7 +15,7 @@ DynamicArray::DynamicArray()
     std::cout << "DynamicArray::DynamicArray()" << std::endl;
 }
 
-// 2. Конструктор с параметрами
+//  Конструктор с параметрами
 DynamicArray::DynamicArray(const int* const arrayData, const int arrayLength, const int arrayCapacity)
     : arrayData_(new int[arrayCapacity]),
     arrayLength_(arrayLength),
@@ -23,7 +27,7 @@ DynamicArray::DynamicArray(const int* const arrayData, const int arrayLength, co
         arrayData_[index] = arrayData[index];
 }
 
-// 3. Конструктор копирования
+//  Конструктор копирования
 DynamicArray::DynamicArray(const DynamicArray& other)
     : arrayData_(new int[other.arrayCapacity_]),
     arrayLength_(other.arrayLength_),
@@ -35,7 +39,7 @@ DynamicArray::DynamicArray(const DynamicArray& other)
         arrayData_[index] = other.arrayData_[index];
 }
 
-// 4. Конструктор перемещения
+//  Конструктор перемещения
 DynamicArray::DynamicArray(DynamicArray&& other)
     : arrayData_(other.arrayData_),
     arrayLength_(other.arrayLength_),
@@ -48,14 +52,14 @@ DynamicArray::DynamicArray(DynamicArray&& other)
     other.arrayData_ = nullptr;
 }
 
-// 5. Деструктор
+//  Деструктор
 DynamicArray::~DynamicArray()
 {
     std::cout << "DynamicArray::~DynamicArray()" << std::endl;
     delete[] arrayData_;
 }
 
-// 6. Обычное копирующее присваивание
+//  Обычное копирующее присваивание
 DynamicArray& DynamicArray::operator=(const DynamicArray& other)
 {
     std::cout << "DynamicArray::operator=(const DynamicArray&)" << std::endl;
@@ -75,7 +79,7 @@ DynamicArray& DynamicArray::operator=(const DynamicArray& other)
     return *this;
 }
 
-// 7. Перемещающее присваивание
+//  Перемещающее присваивание
 DynamicArray& DynamicArray::operator=(DynamicArray&& other)
 {
     std::cout << "DynamicArray::operator=(DynamicArray&&)" << std::endl;
@@ -97,7 +101,7 @@ DynamicArray& DynamicArray::operator=(DynamicArray&& other)
     return *this;
 }
 
-// 8. Геттеры размеров
+//  Геттеры размеров
 int DynamicArray::getLength() const
 {
     return arrayLength_;
@@ -108,7 +112,7 @@ int DynamicArray::getCapacity() const
     return arrayCapacity_;
 }
 
-// 9. Операторы квадратных скобок
+//  Операторы квадратных скобок
 int& DynamicArray::operator[](const int index)
 {
     assert((index >= 0 && index < arrayLength_) && "Index is out of range.");
@@ -121,7 +125,7 @@ const int& DynamicArray::operator[](const int index) const
     return arrayData_[index];
 }
 
-// 10. Метод swap
+//. Метод swap
 void DynamicArray::swap(DynamicArray& other)
 {
     int length = arrayLength_;
@@ -137,7 +141,7 @@ void DynamicArray::swap(DynamicArray& other)
     other.arrayData_ = data;
 }
 
-// 11.мой метод изменения размера массива
+//метод изменения размера массива
 void DynamicArray::resize(int newCapacity)
 {
     int* newData = new int[newCapacity];
@@ -168,7 +172,7 @@ DynamicArray& DynamicArray::operator+=(const int value) {
 
     return *this;
 }
-//
+//добавление всех элементов массива в конец другого маассива
 DynamicArray& DynamicArray::operator+=(const DynamicArray& other) {
     if (arrayCapacity_ < arrayLength_ + other.arrayLength_) {
         resize(arrayLength_ + other.arrayLength_);
@@ -179,7 +183,7 @@ DynamicArray& DynamicArray::operator+=(const DynamicArray& other) {
     arrayLength_ += other.arrayLength_;
     return *this;
 }
-//
+//проверка равности массивов
 bool DynamicArray::operator==(const DynamicArray& other) const {
     if (arrayLength_ == other.arrayLength_) {
         for (int i = 0; i < arrayLength_; i++) {
@@ -191,13 +195,13 @@ bool DynamicArray::operator==(const DynamicArray& other) const {
     }
     return false;
 }
-//
+//проверка на неравность двух массивов
 bool DynamicArray::operator!=(const DynamicArray& other) const {
     if (arrayLength_ != other.arrayLength_) return true;
     return !(*this == other);
 }
 
-//
+//опертор псложения двух масивов
 DynamicArray DynamicArray::operator+(const  DynamicArray& other) const {
     DynamicArray newArray(*this);
     newArray += other;
@@ -283,7 +287,7 @@ bool DynamicArray::insert(int index, int value) {
     }
     return false;
 }
-//
+//удаление по индексу
 bool DynamicArray::removeAt(int index) {
     if (index >= 0 && index < arrayLength_) {
         for (int i = index; i < arrayLength_-1; i++) {
@@ -294,7 +298,7 @@ bool DynamicArray::removeAt(int index) {
     }
     return false;
 }
-//
+//удаление по значению
 bool DynamicArray::removeByValue(int value) {
     if (arrayLength_) {
         for (int i = 0; i < arrayLength_; i++) {
@@ -306,7 +310,7 @@ bool DynamicArray::removeByValue(int value) {
         return false;
     }
 }
-//
+//удаление заданного элемента с его дубликатами
 bool DynamicArray::removeAll(int value) {
     if (arrayLength_) {
         for (int i = 0; i < arrayLength_; i++) {
@@ -327,13 +331,18 @@ std::ostream& operator<<(std::ostream& out, const DynamicArray& s)
     }
     return out;
 }
-
+//тело для оператора >> чтобы вводить массивы
 std::istream& operator>>(std::istream& inp, DynamicArray& s)
 {
+    delete[] s.arrayData_;
+    s.arrayData_ = nullptr;
+    s.arrayLength_ = 0;
+    s.arrayCapacity_ = 0;
+
+  std::cout << "\nВведите массив чисел, в конце Enter: ";
     int count = 0;
     inp >> count;
-    std::cout << "\nВведите массив чисел, в конце Enter: ";
-
+   
     s.arrayLength_ = 0;
     for (int i = 0; i < count; i++) {
         int value = 0;
@@ -349,59 +358,109 @@ std::istream& operator>>(std::istream& inp, DynamicArray& s)
 DynamicArray::iterator::iterator(int* arrayData, int elementIn) : arrayData_(arrayData), elementIndex_(elementIn)
 {
 }
-//
+//получения значения итератора
 int& DynamicArray::iterator::operator*()
 {
     return arrayData_[elementIndex_];
 }
-//
+//смещение итератора вперед и возращение нового значения
 DynamicArray::iterator& DynamicArray::iterator::operator++()
 {
     elementIndex_++;
     return *this;
 }
-//
+//возвращение старого значения, а после смещение на индекс вперед
 DynamicArray::iterator DynamicArray::iterator::operator++(int) {
     iterator old(*this);
     ++(*this);
     return old;
 }
+//перемещение  итерартора на одну позицию назад.
 DynamicArray::iterator DynamicArray::iterator::operator-(int n) const {
    
     return iterator(arrayData_,elementIndex_-n);
 }
-//
+//оператор проверки на неравность итераторов
 bool DynamicArray::iterator::operator!=(const iterator& otherIterator) const{
     return !(*this==otherIterator);
 }
-//
+//оператор проверки равности итераторв массивов
 bool DynamicArray::iterator::operator==(const iterator& other) const {
     if (arrayData_ == other.arrayData_ && elementIndex_ == other.elementIndex_) return true;
     return false;
 }
-//
+//геттер для индексовэлементов
 int DynamicArray::iterator::getelementIndex() const {
     return elementIndex_;
 }
 
 
-
+//добавление перед итератрм
 void DynamicArray::insert(iterator pos, int value)
 {
     int index = pos.getelementIndex();
     insert(index, value);
 }
-
+//удаление по итератору
 bool DynamicArray::erase(iterator pos) {
     int index = pos.getelementIndex();
     return removeAt(index);
 }
 
-
+//begin
 DynamicArray::iterator DynamicArray::begin() {
     return iterator(arrayData_, 0);
 }
-
+//end
 DynamicArray::iterator DynamicArray::end() {
     return iterator(arrayData_, arrayLength_);
 }
+DynamicArray::const_iterator::const_iterator(const int* arrayData, int elementIndex)
+    : arrayData_(arrayData), elementIndex_(elementIndex) {
+}
+
+// Оператор разыменования возвращает неизменяемую (const) ссылку
+const int& DynamicArray::const_iterator::operator*() const {
+    return arrayData_[elementIndex_];
+}
+
+DynamicArray::const_iterator& DynamicArray::const_iterator::operator++() {
+    elementIndex_++;
+    return *this;
+}
+
+DynamicArray::const_iterator DynamicArray::const_iterator::operator++(int) {
+    const_iterator temp = *this;
+    elementIndex_++;
+    return temp;
+}
+
+DynamicArray::const_iterator DynamicArray::const_iterator::operator-(int n) const {
+    const_iterator temp = *this;
+    temp.elementIndex_ -= n;
+    return temp;
+}
+
+bool DynamicArray::const_iterator::operator==(const const_iterator& other) const {
+    return (arrayData_ == other.arrayData_) && (elementIndex_ == other.elementIndex_);
+}
+
+bool DynamicArray::const_iterator::operator!=(const const_iterator& other) const {
+    return !(*this == other);
+}
+
+int DynamicArray::const_iterator::getelementIndex() const {
+    return elementIndex_;
+}
+DynamicArray::const_iterator DynamicArray::begin() const 
+{
+    return const_iterator(arrayData_, 0); }
+DynamicArray::const_iterator DynamicArray::end() const
+{
+    return const_iterator(arrayData_, arrayLength_); }
+DynamicArray::const_iterator DynamicArray::cbegin() const 
+{
+    return const_iterator(arrayData_, 0); }
+DynamicArray::const_iterator DynamicArray::cend() const
+{
+    return const_iterator(arrayData_, arrayLength_); }
