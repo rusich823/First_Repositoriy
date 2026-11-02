@@ -1,110 +1,109 @@
 #pragma once
 #include <iostream>
+    class DynamicArray
+    {
+    public:
 
-class DynamicArray
-{
-public:
+        class iterator;
+        class const_iterator;
 
-    class iterator;
-    class const_iterator;
+        DynamicArray();
 
-    DynamicArray();
+        DynamicArray(const int* const arrayData, const int arrayLength, const int arrayCapacity);
+        DynamicArray(const DynamicArray& other);
+        DynamicArray(DynamicArray&& other);
+        ~DynamicArray();
 
-    DynamicArray(const int* const arrayData, const int arrayLength, const int arrayCapacity);
-    DynamicArray(const DynamicArray& other);
-    DynamicArray(DynamicArray&& other);
-    ~DynamicArray();
+        DynamicArray& operator=(const DynamicArray& other);
+        DynamicArray& operator=(DynamicArray&& other);
+        DynamicArray& operator+=(const int value);
+        DynamicArray operator+(const int newarrayData) const;
+        DynamicArray& operator+=(const DynamicArray& other);
+        DynamicArray operator+(const  DynamicArray& other) const;
 
-    DynamicArray& operator=(const DynamicArray& other);
-    DynamicArray& operator=(DynamicArray&& other);
-    DynamicArray& operator+=(const int value);
-    DynamicArray operator+(const int newarrayData) const;
-    DynamicArray& operator+=(const DynamicArray& other) ;
-    DynamicArray operator+(const  DynamicArray& other) const;
+        int getLength() const;
+        int getCapacity() const;
+        int& operator[](const int index);
+        const int& operator[](const int index) const;
+        int find(const int value) const;
+        int findMax() const;
+        int findMin() const;
 
-    int getLength() const;
-    int getCapacity() const;
-    int& operator[](const int index);
-    const int& operator[](const int index) const;
-    int find(const int value) const;
-    int findMax() const;
-    int findMin() const;
+        void swap(DynamicArray& other);
+        void sort();
 
-    void swap(DynamicArray& other);
-    void sort();
+        bool insert(int index, int value);
+        bool removeAt(int index);
+        bool removeByValue(int value);
+        bool removeAll(int value);
+        bool operator==(const DynamicArray& other) const;
+        bool operator!=(const DynamicArray& other) const;
 
-    bool insert(int index, int value);
-    bool removeAt(int index);
-    bool removeByValue(int value);
-    bool removeAll(int value);
-    bool operator==(const DynamicArray& other) const;
-    bool operator!=(const DynamicArray& other) const;
-
-    friend std::ostream& operator <<(std::ostream& out, const DynamicArray& s);
-    friend   std::istream& operator >>(std::istream& inp, DynamicArray& s);
-
+        friend std::ostream& operator <<(std::ostream& out, const DynamicArray& s);
+        friend   std::istream& operator >>(std::istream& inp, DynamicArray& s);
 
 
-    iterator begin();
-    iterator end();
 
-    const_iterator begin() const;
-    const_iterator end() const;
-    const_iterator cbegin() const; 
-    const_iterator cend() const;
+        iterator begin();
+        iterator end();
 
-    void insert(iterator pos, int value);
-    bool erase(iterator pos);
+        const_iterator begin() const;
+        const_iterator end() const;
+        const_iterator cbegin() const;
+        const_iterator cend() const;
 
-
-private:
-
-    int* arrayData_ = nullptr;
-    int arrayLength_ = 0;
-    int arrayCapacity_ = 0;
-
-    void resize(int newCapacity);
-};
-
-class DynamicArray::iterator
-{
-public:
-
-    iterator() = default;
-    iterator(int* arrayData, int elementIndex);
-
-    bool operator!=(const iterator& otherIterator) const;
-    bool operator==(const iterator& other) const;
-    iterator& operator++();
-    iterator operator++(int);
-    iterator operator-(int n) const;
-    int& operator*();
-    int getelementIndex() const;
+        void insert(iterator pos, int value);
+        bool erase(iterator pos);
 
 
-private:
+    private:
 
-    int* arrayData_ = nullptr;
-    int elementIndex_ = 0;
-};
-class DynamicArray::const_iterator {
-public:
-    const_iterator() = default;
-   
-    const_iterator(const int* arrayData, int elementIndex);
+        int* arrayData_ = nullptr;
+        int arrayLength_ = 0;
+        int arrayCapacity_ = 0;
 
-    bool operator!=(const const_iterator& otherIterator) const;
-    bool operator==(const const_iterator& other) const;
-    const_iterator& operator++();
-    const_iterator operator++(int);
-    const_iterator operator-(int n) const;
+        void resize(int newCapacity);
+    };
 
-    
-    const int& operator*() const;
+    class DynamicArray::iterator
+    {
+    public:
 
-    int getelementIndex() const;
+        iterator() = default;
+        iterator(int* arrayData, int elementIndex);
 
-private:
-    const int* arrayData_ = nullptr;
-    int elementIndex_ = 0;
-};
+        bool operator!=(const iterator& otherIterator) const;
+        bool operator==(const iterator& other) const;
+        iterator& operator++();
+        iterator operator++(int);
+        iterator operator-(int n) const;
+        int& operator*();
+        int getelementIndex() const;
+
+
+    private:
+
+        int* arrayData_ = nullptr;
+        int elementIndex_ = 0;
+    };
+    class DynamicArray::const_iterator {
+    public:
+        const_iterator() = default;
+
+        const_iterator(const int* arrayData, int elementIndex);
+
+        bool operator!=(const const_iterator& otherIterator) const;
+        bool operator==(const const_iterator& other) const;
+        const_iterator& operator++();
+        const_iterator operator++(int);
+        const_iterator operator-(int n) const;
+
+
+        const int& operator*() const;
+
+        int getelementIndex() const;
+
+    private:
+        const int* arrayData_ = nullptr;
+        int elementIndex_ = 0;
+    };
