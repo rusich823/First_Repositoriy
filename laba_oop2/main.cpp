@@ -1,38 +1,56 @@
 #include <iostream>
 #include <string>
 #include <locale.h>
+#include "DynamicArray.h"
 #include "Temple_array.h"
 
 int main() {
     setlocale(LC_ALL, "Russian");
 
-    std::cout << "=== ТЕСТ 1: ИНТЫ ===" << std::endl;
-    DynamicArray<int> arr;
+    std::cout << "=== ЧАСТЬ 1: ПРОВЕРКА ОБЫЧНОГО МАССИВА (IntDynamicArray) ===" << std::endl;
+    IntDynamicArray intArr;
 
-    std::cin >> arr;
-    std::cout << "Ваш массив: " << arr << std::endl;
+    std::cin >> intArr;
+    std::cout << "Ваш массив: " << intArr << std::endl;
 
-    arr += 50;
-    std::cout << "После += 50: " << arr << " (Размер: " << arr.getLength() << ")" << std::endl;
+    intArr += 50;
+    std::cout << "После += 50: " << intArr << " (Размер: " << intArr.getLength() << ")" << std::endl;
 
-    std::cout << "Максимальный элемент: " << arr.findMax() << std::endl;
-    std::cout << "Минимальный элемент: " << arr.findMin() << std::endl;
+    std::cout << "Максимальный элемент: " << intArr.findMax() << std::endl;
+    std::cout << "Минимальный элемент: " << intArr.findMin() << std::endl;
 
-    arr += 5;
-    std::cout << "Перед сортировкой: " << arr << std::endl;
-    arr.sort();
-    std::cout << "После сортировки: " << arr << std::endl;
+    intArr += 5;
+    std::cout << "Перед сортировкой: " << intArr << std::endl;
+    intArr.sort();
+    std::cout << "После сортировки: " << intArr << std::endl;
 
-    arr.removeAt(1);
-    std::cout << "После удаления элемента по индексу 1: " << arr << std::endl;
+    intArr.removeAt(1);
+    std::cout << "После удаления элемента по индексу 1: " << intArr << std::endl;
 
-    auto it = arr.begin();
-    ++it;
-    arr.insert(it, 99);
-    std::cout << "После вставки по итератору (99): " << arr << std::endl;
+    auto it1 = intArr.begin();
+    ++it1;
+    intArr.insert(it1, 99);
+    std::cout << "После вставки по итератору (99): " << intArr << std::endl;
 
 
-    std::cout << "\n=== ТЕСТ 2: ШАБЛОН НА СТРОКАХ ===" << std::endl;
+    std::cout << "\n=== ЧАСТЬ 2: ПРОВЕРКА ШАБЛОННОЙ ВЕРСИИ (DynamicArray<T>) ===" << std::endl;
+
+    std::cout << "\n--- Тест шаблона на числах (int) ---" << std::endl;
+    DynamicArray<int> templateIntArr;
+
+    std::cin >> templateIntArr;
+    std::cout << "Ваш шаблонный массив: " << templateIntArr << std::endl;
+
+    templateIntArr.sort();
+    std::cout << "После сортировки шаблона: " << templateIntArr << std::endl;
+
+    auto it2 = templateIntArr.begin();
+    ++it2;
+    templateIntArr.insert(it2, 777);
+    std::cout << "После вставки по итератору (777): " << templateIntArr << std::endl;
+
+
+    std::cout << "\n--- Тест шаблона на строках (std::string) ---" << std::endl;
     DynamicArray<std::string> strArr;
 
     strArr += "Яблоко";
@@ -46,22 +64,20 @@ int main() {
     std::cout << "Индекс элемента 'Апельсин': " << index << std::endl;
 
     strArr.sort();
-    std::cout << "Строки после сортировки: " << strArr << std::endl;
+    std::cout << "Строки после сортировки по алфавиту: " << strArr << std::endl;
 
 
-    std::cout << "\n=== ТЕСТ 3: КОНСТАНТНЫЕ ИТЕРАТОРЫ И ПЕРЕМЕЩЕНИЕ ===" << std::endl;
-    // Просто вывод через константный итератор
+    std::cout << "\n--- Тест константных итераторов и перемещения шаблона ---" << std::endl;
     std::cout << "Вывод через const_iterator: ";
     for (auto cit = strArr.cbegin(); cit != strArr.cend(); ++cit) {
         std::cout << *cit << " ";
     }
     std::cout << std::endl;
 
-    // Проверка мув-конструктора
-    std::cout << "\nПеремещаем массив..." << std::endl;
-    DynamicArray<int> movedArr = std::move(arr);
-    std::cout << "Новый массив: " << movedArr << std::endl;
-    std::cout << "Размер старого: " << arr.getLength() << std::endl;
+    std::cout << "\nПеремещаем шаблонный массив чисел..." << std::endl;
+    DynamicArray<int> movedArr = std::move(templateIntArr);
+    std::cout << "Новый перемещенный массив: " << movedArr << std::endl;
+    std::cout << "Размер старого массива: " << templateIntArr.getLength() << std::endl;
 
     return 0;
 }

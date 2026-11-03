@@ -1,25 +1,25 @@
 #pragma once
 #include <iostream>
-    class DynamicArray
+    class IntDynamicArray
     {
     public:
 
         class iterator;
         class const_iterator;
 
-        DynamicArray();
+        IntDynamicArray();
 
-        DynamicArray(const int* const arrayData, const int arrayLength, const int arrayCapacity);
-        DynamicArray(const DynamicArray& other);
-        DynamicArray(DynamicArray&& other);
-        ~DynamicArray();
+        IntDynamicArray(const int* const arrayData, const int arrayLength, const int arrayCapacity);
+        IntDynamicArray(const IntDynamicArray& other);
+        IntDynamicArray(IntDynamicArray&& other);
+        ~IntDynamicArray();
 
-        DynamicArray& operator=(const DynamicArray& other);
-        DynamicArray& operator=(DynamicArray&& other);
-        DynamicArray& operator+=(const int value);
-        DynamicArray operator+(const int newarrayData) const;
-        DynamicArray& operator+=(const DynamicArray& other);
-        DynamicArray operator+(const  DynamicArray& other) const;
+        IntDynamicArray& operator=(const IntDynamicArray& other);
+        IntDynamicArray& operator=(IntDynamicArray&& other);
+        IntDynamicArray& operator+=(const int value);
+        IntDynamicArray operator+(const int newarrayData) const;
+        IntDynamicArray& operator+=(const IntDynamicArray& other);
+        IntDynamicArray operator+(const  IntDynamicArray& other) const;
 
         int getLength() const;
         int getCapacity() const;
@@ -29,18 +29,18 @@
         int findMax() const;
         int findMin() const;
 
-        void swap(DynamicArray& other);
+        void swap(IntDynamicArray& other);
         void sort();
 
         bool insert(int index, int value);
         bool removeAt(int index);
         bool removeByValue(int value);
         bool removeAll(int value);
-        bool operator==(const DynamicArray& other) const;
-        bool operator!=(const DynamicArray& other) const;
+        bool operator==(const IntDynamicArray& other) const;
+        bool operator!=(const IntDynamicArray& other) const;
 
-        friend std::ostream& operator <<(std::ostream& out, const DynamicArray& s);
-        friend   std::istream& operator >>(std::istream& inp, DynamicArray& s);
+        friend std::ostream& operator <<(std::ostream& out, const IntDynamicArray& s);
+        friend   std::istream& operator >>(std::istream& inp, IntDynamicArray& s);
 
 
 
@@ -65,7 +65,7 @@
         void resize(int newCapacity);
     };
 
-    class DynamicArray::iterator
+    class IntDynamicArray::iterator
     {
     public:
 
@@ -86,7 +86,7 @@
         int* arrayData_ = nullptr;
         int elementIndex_ = 0;
     };
-    class DynamicArray::const_iterator {
+    class IntDynamicArray::const_iterator {
     public:
         const_iterator() = default;
 
