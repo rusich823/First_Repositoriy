@@ -12,7 +12,7 @@ int main() {
 
     std::cin >> intArr;
     std::cout << "Ваш массив: " << intArr << std::endl;
-
+#if 0
     intArr += 50;
     std::cout << "После += 50: " << intArr << " (Размер: " << intArr.getLength() << ")" << std::endl;
 
@@ -23,10 +23,18 @@ int main() {
     std::cout << "Перед сортировкой: " << intArr << std::endl;
     intArr.sort();
     std::cout << "После сортировки: " << intArr << std::endl;
+#endif
+    int c =intArr.removeAt(3);
+    std::cout << "deletaAt 3  : " << c << std::endl;
+    std::cout << "массив после изменений " << intArr << std::endl;
+     int a=intArr.removeAll(1);
+    std::cout << "deletall 1  : " << a << std::endl;
+    std::cout << "массив после изменений " << intArr << std::endl;
+    int v = intArr.removeByValue(5);
+    std::cout << "deletatByValue 5 : " << v << std::endl;
+    std::cout << "массив после изменений " << intArr << std::endl;
 
-    intArr.removeAt(1);
-    std::cout << "После удаления элемента по индексу 1: " << intArr << std::endl;
-
+#if 0
     auto it1 = intArr.begin();
     ++it1;
     intArr.insert(it1, 99);
@@ -78,6 +86,6 @@ int main() {
     DynamicArray<int> movedArr = std::move(templateIntArr);
     std::cout << "Новый перемещенный массив: " << movedArr << std::endl;
     std::cout << "Размер старого массива: " << templateIntArr.getLength() << std::endl;
-
+#endif
     return 0;
 }

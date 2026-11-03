@@ -304,19 +304,21 @@
                     return true;
                 }
             }
-            return false;
         }
+     return false;
     }
     //удаление заданного элемента с его дубликатами
     bool IntDynamicArray::removeAll(int value) {
         if (arrayLength_) {
+            bool wasDeleted = false;
             for (int i = 0; i < arrayLength_; i++) {
                 if (arrayData_[i] == value) {
                     removeAt(i);
                     i--;
+                    wasDeleted = true ;
                 }
             }
-            return true;
+            return wasDeleted;
         }
         return false;
     }

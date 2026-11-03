@@ -2,8 +2,6 @@
 #include <assert.h>
 #include <iostream>
 
-
-
     template <class T>
     class DynamicArray {
     public:
