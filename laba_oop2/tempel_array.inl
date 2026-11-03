@@ -340,13 +340,15 @@
     template<typename T>
     bool DynamicArray<T>::removeAll(const T& value) {
         if (arrayLength_) {
+            bool wasDeleted = false;
             for (int i = 0; i < arrayLength_; i++) {
                 if (arrayData_[i] == value) {
                     removeAt(i);
                     i--;
+                    wasDeleted = true;
                 }
             }
-            return true;
+            return wasDeleted;
         }
         return false;
     }
