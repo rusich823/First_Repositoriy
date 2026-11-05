@@ -1,38 +1,37 @@
 #include <iostream>
+#include <fstream>
+#include <random>
+#include <string>    
+#include <locale.h>
 #include "met_shell.h"
-#include<locale.h>
+
+    void generate_file(int const size, int const min_val, int const max_val,  const std::string  filename) {
+        std::mt19937 gen(1337);
+        std::uniform_int_distribution<int> dist(min_val, max_val);
+        std::ofstream fout(filename);
+        for (int i = 0; i < size; ++i) {
+            fout << dist(gen);
+            if (i != size - 1) {
+                fout << " "; 
+            }
+        }
+
+        fout.close(); 
+    }
+
+
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    // 1. Создаем небольшой тестовый массив из случайных чисел
-    int const N = 12;
-    int test_mass[N] = { 42, -10, 5, 0, 99, -3, 5, 14, 22, -100, 7, 1 };
 
-    std::cout << "=== Тестирование алгоритма Шелла ===\n\n";
-
-    // 2. Выводим массив до сортировки
-    std::cout << "Исходный массив: ";
-    for (int i = 0; i < N; i++) {
-        std::cout << test_mass[i] << " ";
+    int sizzes[3] = { 10000, 100000, 1000000 };
+    int minVals[3] = { -10, -1000, -100000 };
+    int maxVals[3] = { 10, 1000, 100000 };
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            std::string filename = "arr_" + std::to_string(sizzes[i]) + "_" + std::to_string(maxVals[j]) + ".txt";
+            generate_file(sizzes[i], minVals[j], maxVals[j],filename);
+        }
     }
-    std::cout << "\n";
-
-    // 3. Проверяем статус ДО сортировки
-    std::cout << "Массив упорядочен? " << (is_sorted(test_mass, N) ? "ДА" : "НЕТ") << "\n\n";
-
-    // 4. Запускаем твою сортировку Шелла
-    std::cout << "Сортируем массив...\n";
-    shell_sort(test_mass, N);
-
-    // 5. Выводим массив ПОСЛЕ сортировки
-    std::cout << "Отсортированный массив: ";
-    for (int i = 0; i < N; i++) {
-        std::cout << test_mass[i] << " ";
-    }
-    std::cout << "\n";
-
-    // 6. Проверяем статус ПОСЛЕ сортировки
-    std::cout << "Массив упорядочен? " << (is_sorted(test_mass, N) ? "ДА" : "НЕТ") << "\n\n";
-
     return 0;
 }

@@ -3,16 +3,20 @@
 #include <locale.h>
 #include "DynamicArray.h"
 #include "Temple_array.h"
+#include <random>
+
+
+
 
 int main() {
     setlocale(LC_ALL, "Russian");
+#if 0
 
     std::cout << "=== ЧАСТЬ 1: ПРОВЕРКА ОБЫЧНОГО МАССИВА (IntDynamicArray) ===" << std::endl;
     IntDynamicArray intArr;
 
     std::cin >> intArr;
     std::cout << "Ваш массив: " << intArr << std::endl;
-#if 0
     intArr += 50;
     std::cout << "После += 50: " << intArr << " (Размер: " << intArr.getLength() << ")" << std::endl;
 
@@ -23,7 +27,7 @@ int main() {
     std::cout << "Перед сортировкой: " << intArr << std::endl;
     intArr.sort();
     std::cout << "После сортировки: " << intArr << std::endl;
-#endif
+
     int c =intArr.removeAt(3);
     std::cout << "deletaAt 3  : " << c << std::endl;
     std::cout << "массив после изменений " << intArr << std::endl;
@@ -33,6 +37,33 @@ int main() {
     int v = intArr.removeByValue(5);
     std::cout << "deletatByValue 5 : " << v << std::endl;
     std::cout << "массив после изменений " << intArr << std::endl;
+#endif
+
+    std::random_device rd;          
+    std::mt19937 gen(rd());         
+    std::uniform_int_distribution<int> dist(-50, 50);
+    DynamicArray <DynamicArray<int>> matr;
+    int n;
+    std::cout << "Введите размер матрицы : ";
+    std::cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        DynamicArray<int> row;
+        for (int j = 0; j < n; j++) {
+            row += dist(gen);
+        }
+        matr += row;
+    }
+    std::cout << "\nСгенерированная матрица:\n";
+    for (int i = 0; i < matr.getLength(); i++) {
+        for (int j = 0; j < matr[i].getLength(); j++) {
+            std::cout << matr[i][j] << "\t";
+        }
+        std::cout << std::endl;
+    }
+
+    std::cout << matr[1][1];
+
 
 #if 0
     auto it1 = intArr.begin();
