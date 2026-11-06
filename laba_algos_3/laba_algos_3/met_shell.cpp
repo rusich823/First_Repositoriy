@@ -1,6 +1,10 @@
 #include "met_shell.h"
 #include <vector>
 #include <cmath>
+#include <fstream>
+#include <random>
+#include <string>    
+#include <locale.h>
 #include <algorithm>
 
 std::vector<int> knyt(int const n) {
@@ -61,4 +65,18 @@ bool is_sorted(int const* mass, int const n) {
 		}
 	}
 	return true; 
+}
+
+void generate_file(int const size, int const min_val, int const max_val, const std::string  filename) {
+	std::mt19937 gen(1337);
+	std::uniform_int_distribution<int> dist(min_val, max_val);
+	std::ofstream fout(filename);
+	for (int i = 0; i < size; ++i) {
+		fout << dist(gen);
+		if (i != size - 1) {
+			fout << " ";
+		}
+	}
+
+	fout.close();
 }
