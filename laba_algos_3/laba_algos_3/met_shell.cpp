@@ -38,7 +38,7 @@ for (int h = n / 2; h > 0; h /= 2) {
 	return mas_h;
 }
 
-	void shell_sort(int* mass, int const n,const std::vector<int>& mas_h) {
+	void shell_sort(int * mass, int const n,const std::vector<int>& mas_h) {
 	
 		for (int i = 0; i < mas_h.size(); i++) {
 
