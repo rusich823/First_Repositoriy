@@ -22,10 +22,8 @@
         std::vector<int> gaps_hibbart = hibbart(size);
         std::vector<int> gaps_knyt = knyt(size);
 
-        // Переменные для суммирования времени
         double time_shell = 0.0, time_hibbart = 0.0, time_knyt = 0.0;
 
-        // Крутим 3 запуска для получения среднего времени
         for (int run = 0; run < 3; run++) {
             // --- 1. ТЕСТ ШЕЛЛА ---
             std::vector<int> arr_shell = original_arr;
@@ -49,7 +47,6 @@
             time_knyt += std::chrono::duration<double, std::milli>(end - start).count();
         }
 
-        // Выводим красивую отформатированную строчку для этого файла
         std::cout << size << "\t" << filename
             << "\tШелл: " << (time_shell / 3.0) << " мс"
             << "\tХиббард: " << (time_hibbart / 3.0) << " мс"
@@ -71,7 +68,7 @@
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 test_speed(filenames[i][j], sizes[i]);
-                // Как вызвать функцию test_all_methods, используя твои массивы sizzes и filenames?
+              
             }
         }
 
