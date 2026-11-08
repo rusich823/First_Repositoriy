@@ -19,3 +19,14 @@ void Sift1(int* mas, const int n,int i) {
 		else return;
 	}
 }
+void Sort_Pyro(int* mas, const int n) {
+	for (int i = n / 2 - 1; i >= 0; i--) {
+		Sift1(mas, n, i);
+	}
+	for (int i = n - 1; i >= 1; i--) {
+		int a = mas[0];
+		mas[0] = mas[i];
+		mas[i] = a;
+		Sift1(mas, i, 0);
+	}
+}
