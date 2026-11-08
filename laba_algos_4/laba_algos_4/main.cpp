@@ -27,3 +27,24 @@ void test_speed(const std::string& filename, int const size) {
 		time_shell += std::chrono::duration<double, std::milli>(end - start).count();
 
 	}
+	int main() {
+		setlocale(LC_ALL, "Russian");
+
+		int sizes[3] = { 10000, 100000, 1000000 };
+		int minVals[3] = { -10, -1000, -100000 };
+		int maxVals[3] = { 10, 1000, 100000 };
+		const char* filenames[3][3] = {
+		{ "arr_10000_10.txt", "arr_10000_1000.txt", "arr_10000_100000.txt" },
+		{ "arr_100000_10.txt", "arr_100000_1000.txt", "arr_100000_100000.txt" },
+		{ "arr_1000000_10.txt", "arr_1000000_1000.txt", "arr_1000000_100000.txt" }
+		};
+
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				test_speed(filenames[i][j], sizes[i]);
+
+			}
+		}
+
+		return 0;
+	}
