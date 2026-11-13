@@ -1,5 +1,7 @@
 #include "BoolVec.h"
 #include <stdint.h>
+#include <cstring>
+
 
 BoolVec::BoolVec(const uint32_t numBits, const bool initialValue) {
 	numBits_ = numBits;
@@ -20,7 +22,27 @@ BoolVec::BoolVec(const uint32_t numBits, const bool initialValue) {
 		}
 	}
 }
+BoolVec::BoolVec(const BoolVec& other) : vectorData_(nullptr),numBits_(other.numBits_),numBytes_(other.numBytes_)
+{ 
+	if (numBytes_ > 0) {
+		vectorData_ = new uint8_t[numBytes_];
+		for (uint32_t i = 0; i < numBytes_; i++) {
+			vectorData_[i] = other.vectorData_[i];
+		}
+	}
+}
+BoolVec::BoolVec(const char* bitstring) {
+	if (bitstring == nullptr) return;
+	numBits_=strlen(bitstring);
+	numBytes_= numBits_ / 8;
+	if (numBits_ % 8) numBytes_++;
+	if (numBytes_ > 0)
+	 vectorData_ = new uint8_t[numBytes_]();
+	for (uint32_t i = 0; i < numBits_; i++){
+		setValue(i, bitstring[i] == '1');
+	}
 
+}
 BoolVec::~BoolVec() {
 	delete[] vectorData_;
 }
@@ -91,4 +113,62 @@ std::ostream& operator<<(std::ostream& outputStream, const BoolVec& boolVec) {
 	}
 
 	return outputStream;
+}
+BoolVec& BoolVec::operator=(const BoolVec& other) {
+	if (this != &other) {
+		delete[] vectorData_;
+		numBits_ = other.numBits_;
+		numBytes_ = other.numBytes_;
+
+	    if(numBytes_>0) vectorData_ = new uint8_t[numBytes_];
+		
+		else vectorData_ = nullptr;
+
+		for (uint32_t i = 0; i < numBytes_; i++) {
+			vectorData_[i] = other.vectorData_[i];
+		}
+	}
+	return *this;
+}
+
+void BoolVec::swap(BoolVec& other) {
+	uint32_t numByt = numBytes_;
+	numBytes_ = other.numBytes_;
+	other.numBytes_ = numByt;
+
+	uint32_t numBit = numBits_;
+	numBits_ = other.numBits_;
+	other.numBits_ = numBit;
+
+	uint8_t* vectorDat =vectorData_ ;
+	vectorData_ = other. vectorData_;
+	other.vectorData_ = vectorDat;
+}
+void BoolVec::invert() {
+	for (uint32_t i = 0; i < numBytes_; i++) {
+		vectorData_[i] = ~vectorData_[i];
+	}
+}
+
+
+
+BoolVec BoolVec::operator~()const {
+	BoolVec res = *this;
+	for (uint32_t i = 0; i < numBytes_; i++) {
+		res.vectorData_[i] = ~res.vectorData_[i];
+	}
+	return res;
+}
+
+BoolVec BoolVec::operator&(const BoolVec& other) const{
+	uint32_t minBits;
+	if (numBits_ < other.numBits_)
+		 minBits = numBits_;
+	else  minBits = other.numBits_;
+	BoolVec res(minBits, false);
+
+	for (uint32_t i = 0; i < res.numBytes_; i++) {
+		res.vectorData_[i] = vectorData_[i]&other.vectorData_[i];
+	}
+	return res;
 }
