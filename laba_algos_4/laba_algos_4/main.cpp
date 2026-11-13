@@ -27,7 +27,10 @@ void test_speed(const std::string& filename, int const size) {
 		time_shell += std::chrono::duration<double, std::milli>(end - start).count();
 
 	}
-	int main() {
+	std::cout << size << "\t" << filename
+		<< "\tПирамидальная сортировка: " << (time_shell / 3.0) << " мс\n";
+}
+int main() {
 		setlocale(LC_ALL, "Russian");
 
 		int sizes[3] = { 10000, 100000, 1000000 };
