@@ -20,6 +20,11 @@ public:
 	BoolVec& operator=(const BoolVec& other);
 	BoolVec operator~()const;
 	BoolVec operator&(const BoolVec& other) const;
+	BoolVec operator|(const BoolVec& other) const;
+	BoolVec operator^ (const BoolVec& other) const;
+	BoolVec operator<<(const uint32_t shift) const;
+	BoolVec operator>>(const uint32_t shift) const;
+
 
 	void setValue(const uint32_t bitIndex, const bool newValue);
 	void swap(BoolVec& other);

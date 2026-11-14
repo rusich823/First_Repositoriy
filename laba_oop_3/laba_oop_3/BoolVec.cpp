@@ -168,7 +168,51 @@ BoolVec BoolVec::operator&(const BoolVec& other) const{
 	BoolVec res(minBits, false);
 
 	for (uint32_t i = 0; i < res.numBytes_; i++) {
-		res.vectorData_[i] = vectorData_[i]&other.vectorData_[i];
+		res.vectorData_[i] = vectorData_[i] & other.vectorData_[i];
+	}
+	return res;
+}
+
+BoolVec BoolVec::operator|(const BoolVec& other) const {
+	uint32_t minBits;
+	if (numBits_ < other.numBits_)
+		minBits = numBits_;
+	else  minBits = other.numBits_;
+	BoolVec res(minBits, false);
+
+	for (uint32_t i = 0; i < res.numBytes_; i++) {
+		res.vectorData_[i] = vectorData_[i] | other.vectorData_[i];
+	}
+	return res;
+}
+BoolVec BoolVec::operator^ (const BoolVec& other) const {
+	uint32_t minBits;
+	if (numBits_ < other.numBits_)
+		minBits = numBits_;
+	else  minBits = other.numBits_;
+	BoolVec res(minBits, false);
+
+	for (uint32_t i = 0; i < res.numBytes_; i++) {
+		res.vectorData_[i] = vectorData_[i] ^ other.vectorData_[i];
+	}
+	return res;
+}
+
+BoolVec BoolVec::operator<<(const uint32_t shift) const {
+	BoolVec res (numBits_, false);;
+	if (shift < numBits_) {
+		for (uint32_t i = shift; i < numBits_; i++) {
+			res.setValue(i - shift, (*this)[i]);
+		}
+	}
+	return res;
+}
+BoolVec BoolVec::operator>>(const uint32_t shift) const {
+	BoolVec res(numBits_, false);;
+	if (shift < numBits_) {
+		for (uint32_t i = 0; i < numBits_-shift; i++) {
+			res.setValue(i + shift, (*this)[i]);
+		}
 	}
 	return res;
 }
