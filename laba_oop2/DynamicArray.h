@@ -62,7 +62,7 @@
         int arrayLength_ = 0;
         int arrayCapacity_ = 0;
 
-        void resize(int newCapacity);
+        void resize(int newCapacity);   
     };
 
     class IntDynamicArray::iterator
