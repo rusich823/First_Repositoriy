@@ -150,6 +150,33 @@ void BoolVec::invert() {
 	}
 }
 
+void BoolVec::invert_id(const uint32_t index1) {
+	if (index1 < numBits_) {
+		if ((*this)[index1] == 0) this->setValue(index1, true);
+
+		else
+		{
+			this->setValue(index1, false);
+		}
+	}
+}
+void BoolVec::add_all(bool value) {
+	for (uint32_t i = 0; i < numBits_; i++) {
+		(*this)[i] = value;
+	}
+}
+void BoolVec::add_id(const uint32_t index1, bool value) {
+	if (index1 < numBits_) (*this)[index1] = value;
+
+}
+void BoolVec::add_k_id(const uint32_t index1, const uint32_t k, bool value)
+{
+	if (index1 < numBits_) {
+		for (uint32_t i = index1;   i < index1 + k && i < numBits_; i++) {
+			(*this)[i] = value;
+		}
+	}
+}
 
 
 BoolVec BoolVec::operator~()const {
@@ -172,6 +199,10 @@ BoolVec BoolVec::operator&(const BoolVec& other) const{
 	}
 	return res;
 }
+BoolVec& BoolVec::operator&=(const BoolVec& other) {
+	*this = *this & other;
+	return *this;
+}
 
 BoolVec BoolVec::operator|(const BoolVec& other) const {
 	uint32_t minBits;
@@ -185,6 +216,11 @@ BoolVec BoolVec::operator|(const BoolVec& other) const {
 	}
 	return res;
 }
+BoolVec& BoolVec::operator|=(const BoolVec& other) {
+	*this = *this | other;
+	return *this;
+}
+
 BoolVec BoolVec::operator^ (const BoolVec& other) const {
 	uint32_t minBits;
 	if (numBits_ < other.numBits_)
@@ -197,6 +233,11 @@ BoolVec BoolVec::operator^ (const BoolVec& other) const {
 	}
 	return res;
 }
+BoolVec& BoolVec::operator^=(const BoolVec& other) {
+	*this = *this ^ other;
+	return *this;
+}
+
 
 BoolVec BoolVec::operator<<(const uint32_t shift) const {
 	BoolVec res (numBits_, false);;
@@ -207,6 +248,12 @@ BoolVec BoolVec::operator<<(const uint32_t shift) const {
 	}
 	return res;
 }
+BoolVec& BoolVec::operator<<=(const uint32_t shift) {
+	*this = *this << shift;
+	return *this;
+}
+
+
 BoolVec BoolVec::operator>>(const uint32_t shift) const {
 	BoolVec res(numBits_, false);;
 	if (shift < numBits_) {
@@ -215,4 +262,16 @@ BoolVec BoolVec::operator>>(const uint32_t shift) const {
 		}
 	}
 	return res;
+}
+BoolVec& BoolVec::operator>>=(const uint32_t shift) {
+	*this = *this >> shift;
+	return *this;
+}
+
+uint32_t BoolVec::weight() const {
+	uint32_t count = 0;
+	for (uint32_t i = 0; i < numBits_; i++) {
+		if ((*this)[i] == 1) count++;
+	}
+	return count;
 }

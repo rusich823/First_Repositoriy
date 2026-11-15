@@ -14,6 +14,9 @@ public:
 	~BoolVec();
 
 	uint32_t size() const;
+	uint32_t weight() const;
+
+
 
 	bool operator[](const uint32_t bitIndex) const;
 	BitReference operator[](const uint32_t bitIndex);
@@ -24,14 +27,19 @@ public:
 	BoolVec operator^ (const BoolVec& other) const;
 	BoolVec operator<<(const uint32_t shift) const;
 	BoolVec operator>>(const uint32_t shift) const;
-
+	BoolVec& operator&=(const BoolVec& other);
+	BoolVec& operator|=(const BoolVec& other);
+	BoolVec& operator^=(const BoolVec& other);
+	BoolVec& operator<<=(const uint32_t shift);
+	BoolVec& operator>>=(const uint32_t shift);
 
 	void setValue(const uint32_t bitIndex, const bool newValue);
 	void swap(BoolVec& other);
 	void invert();
-	
-
-
+	void invert_id(const uint32_t index1);
+	void add_all(bool value);
+	void add_id(const uint32_t index1, bool value);
+	void add_k_id(const uint32_t index1, const uint32_t k, bool value);
 
 private:
 	uint8_t* vectorData_ = nullptr;
