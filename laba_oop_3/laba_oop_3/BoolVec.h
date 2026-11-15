@@ -52,8 +52,20 @@ class BoolVec::BitReference
 public:
 	BitReference(uint8_t* bytePtr, uint32_t bitIndex);
 
-	operator bool();
+	operator bool() const;
 	void operator=(const bool newValue);
+	BitReference& operator=(const BitReference& other);
+	BitReference& operator&=(const bool val);
+	BitReference& operator|=(const bool val);
+	BitReference& operator^=(const bool val);
+
+	bool operator~() const;
+	bool operator&(const bool val) const;
+	bool operator|(const bool val) const;
+	bool operator^(const bool val) const;
+	bool operator==(const bool val) const;
+	bool operator!=(const bool val) const;
+
 
 private:
 	uint8_t* bytePtr_;

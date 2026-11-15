@@ -79,7 +79,7 @@ BoolVec::BitReference::BitReference(uint8_t* bytePtr, uint32_t bitIndex)
 	: bytePtr_(bytePtr), bitIndex_(bitIndex) {
 }
 
-BoolVec::BitReference::operator bool() {
+BoolVec::BitReference::operator bool() const {
 	return *bytePtr_ & (1 << bitIndex_);
 }
 
@@ -152,8 +152,7 @@ void BoolVec::invert() {
 
 void BoolVec::invert_id(const uint32_t index1) {
 	if (index1 < numBits_) {
-		if ((*this)[index1] == 0) this->setValue(index1, true);
-
+		if ((*this)[index1] == false) this->setValue(index1, true);
 		else
 		{
 			this->setValue(index1, false);
@@ -274,4 +273,45 @@ uint32_t BoolVec::weight() const {
 		if ((*this)[i] == 1) count++;
 	}
 	return count;
+}
+
+
+BoolVec::BitReference& BoolVec::BitReference::operator=(const BitReference& other)
+{
+	*this = (bool)other;
+	return *this;
+}
+BoolVec::BitReference& BoolVec::BitReference::operator&=(const bool val) {
+	*this = (bool)*this & val;
+	return *this;
+}
+BoolVec::BitReference& BoolVec::BitReference::operator|=(const bool val) {
+	*this = (bool)*this | val;
+	return *this;
+
+}
+BoolVec::BitReference& BoolVec::BitReference::operator^=(const bool val) {
+	*this = (bool)*this ^ val;
+	return *this;
+}
+bool BoolVec::BitReference::operator~() const {
+	if ((bool)*this == 0) return true;
+	return false;
+}
+bool BoolVec::BitReference::operator&(const bool val) const {
+	return  ((bool)*this & val);
+}
+
+bool BoolVec::BitReference::operator|(const bool val) const {
+	return  ((bool)*this | val);
+}
+
+bool BoolVec::BitReference::operator^(const bool val) const {
+	return  ((bool)*this ^ val);
+}
+bool BoolVec::BitReference::operator==(const bool val) const {
+	return ((bool)*this == val);
+}
+bool BoolVec::BitReference::operator!=(const bool val) const {
+	return !((bool)*this == val);
 }
