@@ -9,6 +9,8 @@ int main() {
 
    BoolVec v1(6, false);
     BoolVec v2("101100");
+    std::cout << "v1: " << v1 << "\n";
+    std::cout << "v2: " << v2 << "\n";
     BoolVec v3 = v2;
     v1.swap(v3);
     std::cout << "v1 после swap: " << v1 << "\n";
@@ -16,6 +18,8 @@ int main() {
 
     BoolVec a("110010");
     BoolVec b("101011");
+    std::cout << "a: " << a << "\n";
+    std::cout << "b: " << b << "\n";
     std::cout << "~a:     " << ~a << "\n";
     std::cout << "a & b:  " << (a & b) << "\n";
     std::cout << "a | b:  " << (a | b) << "\n";
@@ -24,16 +28,21 @@ int main() {
     std::cout << "a >> 2: " << (a >> 2) << "\n\n";
 
     BoolVec g("100101");
+    std::cout << "g: " << g << "\n";
+
     std::cout << "¬ес g: " << g.weight() << "\n";
     g.invert_id(0);
     g.add_k_id(2, 3, true);
     std::cout << "g после изменений: " << g << "\n";
 
     g &= BoolVec("111000");
+    std::cout << "g: " << g << "\n";
     g <<= 1;
+
     std::cout << "g после &= и <<=:  " << g << "\n\n";
 
     BoolVec p("1001");
+    std::cout << "p: " << p << "\n";
     p[1] = p[0];
     p[2] |= true;
     std::cout << "p после BitReference: " << p << "\n";
