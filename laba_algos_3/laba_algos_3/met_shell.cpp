@@ -10,8 +10,6 @@
 std::vector<int> knyt(int const n) {
 	std::vector<int> mas_h;
 	int h = 1;
-
-	
 	while (h < n) {
 		mas_h.push_back(h);
 		h = 3 * h + 1; 

@@ -17,6 +17,7 @@ public:
 	uint32_t weight() const;
 
 
+	bool equality() const;
 
 	bool operator[](const uint32_t bitIndex) const;
 	BitReference operator[](const uint32_t bitIndex);
@@ -40,6 +41,11 @@ public:
 	void add_all(bool value);
 	void add_id(const uint32_t index1, bool value);
 	void add_k_id(const uint32_t index1, const uint32_t k, bool value);
+	void sdvig();
+	void swap_bit(const uint32_t index1,const uint32_t index2);
+	void revers();
+
+
 
 private:
 	uint8_t* vectorData_ = nullptr;

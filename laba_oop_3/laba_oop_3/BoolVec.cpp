@@ -315,3 +315,34 @@ bool BoolVec::BitReference::operator==(const bool val) const {
 bool BoolVec::BitReference::operator!=(const bool val) const {
 	return !((bool)*this == val);
 }
+void BoolVec::sdvig() {
+	uint32_t ves = this->weight();
+	this->add_all(false);
+	this->add_k_id(numBits_-ves,ves,true);
+	//for (uint32_t i = 0; i < ves; i++) {
+		//(*this)[numBits_- 1 - i] = true;
+	//}
+	//
+}
+bool BoolVec::equality() const {
+
+	if (numBits_ % 2 == 0) {
+		uint32_t ves = this->weight();
+		if ((numBits_ / 2) != ves) return false;
+		return true;
+	}
+	return false;
+}
+void BoolVec::swap_bit(const uint32_t index1, const uint32_t index2) {
+	if (index1 < numBits_ && index2 < numBits_)
+	{
+		bool copy = (*this)[index1];
+		(*this)[index1] = (*this)[index2];
+		(*this)[index2] = copy;
+	}
+}
+void BoolVec::revers() {
+	for (uint32_t i = 0; i < numBits_ / 2; i++) {
+		this->swap_bit(i,numBits_-1-i);
+	}
+}
