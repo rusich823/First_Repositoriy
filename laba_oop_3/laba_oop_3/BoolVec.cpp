@@ -346,3 +346,68 @@ void BoolVec::revers() {
 		this->swap_bit(i,numBits_-1-i);
 	}
 }
+void BoolVec::revers_id(const uint32_t index1, const uint32_t index2) {
+	if (index1 < numBits_ && index2 < numBits_) {
+	for (uint32_t i = index1, j =index2; i < (index2 + index1 + 1) / 2; i++,j--) {
+		this->swap_bit(i, j);
+	}
+}
+}
+uint32_t BoolVec::find_1() const {
+	for (uint32_t i = 0; i < numBits_; i++)
+	{
+		if ((*this)[i] == 1) return i;
+	}
+	return  numBits_;
+}
+uint32_t BoolVec::find_last_1() const {
+	for (uint32_t i = 0; i < numBits_; i++)
+	{
+		if ((*this)[numBits_-i-1] == 1) return (numBits_-i-1);
+	}
+	return  numBits_;
+}
+uint32_t BoolVec::Heming(const BoolVec& other) const {
+	if (numBits_ == other.size()) {
+		uint32_t count = 0;
+		for (uint32_t i = 0; i < numBits_; i++) {
+			if ((*this)[i] != other[i]) count++;
+		}
+		return count;
+	}
+}
+
+void BoolVec::comparison(const BoolVec& other) const {
+	if (numBits_ == other.size()) {
+		bool flag_1 = false;
+		bool flag_2 = false;
+
+		for (uint32_t i = 0; i < numBits_; i++) {
+			if ((*this)[i] > other[i]) {
+				flag_1 = true;
+			}
+			else if ((*this)[i] < other[i]) {
+				flag_2 = true;
+			}
+		}
+
+		if (flag_1 && flag_2) {
+			std::cout << "Векторы несравнимы" << std::endl;
+			return;
+		}
+		else if (flag_1) {
+			std::cout << "Первый вектор больше второго" << std::endl;
+			return;
+		}
+		else if (flag_2) {
+			std::cout << "Первый вектор меньше второго" << std::endl;
+			return;
+		}
+		else {
+			std::cout << "Векторы равны" << std::endl;
+			return;
+		}
+	}
+	std::cout << "Векторы несравнимы" << std::endl;
+	return ;
+}

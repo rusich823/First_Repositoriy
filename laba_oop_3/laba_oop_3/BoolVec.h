@@ -15,7 +15,9 @@ public:
 
 	uint32_t size() const;
 	uint32_t weight() const;
-
+	uint32_t find_1() const;
+	uint32_t find_last_1() const;
+	uint32_t Heming(const BoolVec& other) const;
 
 	bool equality() const;
 
@@ -44,7 +46,8 @@ public:
 	void sdvig();
 	void swap_bit(const uint32_t index1,const uint32_t index2);
 	void revers();
-
+	void revers_id(const uint32_t index1, const uint32_t index2);
+	void comparison(const BoolVec& other) const;
 
 
 private:
